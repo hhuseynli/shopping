@@ -9,6 +9,7 @@ from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgGridModule } from 'ag-grid-angular';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
 
 
 
@@ -28,7 +29,8 @@ import { FormsModule } from '@angular/forms';
     MatDialogModule,
     MatProgressSpinnerModule,
     MatButtonModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    HttpClientModule
 
   ],
   providers: [],

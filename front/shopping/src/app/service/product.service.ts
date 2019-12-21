@@ -1,10 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../component/model/product';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 products:Product[]=[];
-  constructor() { }
+  constructor( private http:HttpClient) { }
+
+  addProductToBackend(product:Product ){
+    this.http.post("http://localhost:8080/products/product", product).subscribe(
+      ans=>{
+        alert('Product Added Successfully');
+      }
+    );
+  }
+  getAllProducts(){
+    return this.http.get<Product[]>("http://localhost:8080/products/product") ;
+  }
 }

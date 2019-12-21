@@ -25,9 +25,9 @@ onSaveProduct(){
 private gridApi;
 
   columnDefs = [
-    {headerName: 'Name', field: 'name', sortable: true, filter: true, checkboxSelection: true,width:100},
+    {headerName: 'ID', field: 'id', sortable: true, filter: true, checkboxSelection: true,width:100},
+    {headerName: 'Name', field: 'name', sortable: true, filter: true},
     {headerName: 'Description', field: 'description', sortable: true, filter: true},
-    {headerName: 'Image', field: 'birthday', sortable: true, filter: true},
     {headerName: 'Price', field: 'price', sortable: true, filter: true}
  ];
  onGridReady(event) {
@@ -39,6 +39,10 @@ quickSearch() {
    this.gridApi.setQuickFilter(this.searchText);
 }
 loadRows(){
-  this.products= this.service.products;
+   this.service.getAllProducts().subscribe(
+     resp=>{
+       this.products=resp;
+     }
+   );
 }
 }
