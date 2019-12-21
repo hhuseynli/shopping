@@ -1,1 +1,29 @@
-<p>add-product works!</p>
+<h3>Add a product</h3>
+<table>
+    <tbody>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" [(ngModel)]="product.name"></td>
+        </tr>
+
+        <tr>
+            <td>Description:</td>
+            <td><textarea [(ngModel)]="product.description"></textarea></td>
+        </tr>
+
+        <tr>
+            <td>Image:</td>
+            <td><input type="file" [(ngModel)]="product.image"></td>
+        </tr>
+
+        <tr>
+            <td>Price:</td>
+            <td><input type="number" [(ngModel)]="product.price"></td>
+        </tr>
+        <tr>
+
+            <td><button (click)="onSaveProduct()" class="btn btn-success">Save Product</button></td>
+        </tr>
+
+    </tbody>
+</table>
