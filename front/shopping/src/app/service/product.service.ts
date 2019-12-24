@@ -10,8 +10,9 @@ products:Product[]=[];
   constructor( private http:HttpClient) { }
 
   addProductToBackend(product:Product ){
-    this.http.post("http://localhost:8080/products/product", product).subscribe(
+    this.http.post<Product>("http://localhost:8080/products/product", product).subscribe(
       ans=>{
+        console.log(ans);
         alert('Product Added Successfully');
       }
     );

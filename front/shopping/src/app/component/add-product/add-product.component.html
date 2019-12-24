@@ -1,29 +1,32 @@
+
+<form #productForm="ngForm" (ngSubmit)="!productForm.invalid && onSaveProduct()">
 <h3>Add a product</h3>
 <table>
     <tbody>
         <tr>
             <td>Name:</td>
-            <td><input type="text" [(ngModel)]="product.name"></td>
+            <td><input type="text" [(ngModel)]="product.name" name="task" required></td>
         </tr>
 
         <tr>
             <td>Description:</td>
-            <td><textarea [(ngModel)]="product.description"></textarea></td>
+            <td><textarea [(ngModel)]="product.description" name="desc" required></textarea></td>
         </tr>
 
         <tr>
             <td>Image:</td>
-            <td><input type="file" [(ngModel)]="product.image"></td>
+            <td><input type="file" [(ngModel)]="product.image" name="img" required></td>
         </tr>
 
         <tr>
             <td>Price:</td>
-            <td><input type="number" [(ngModel)]="product.price"></td>
+            <td><input type="number" [(ngModel)]="product.price" name="price" required></td>
         </tr>
         <tr>
 
-            <td><button (click)="onSaveProduct()" class="btn btn-success">Save Product</button></td>
+            <td><button class="btn btn-success">Save Product</button></td>
         </tr>
 
     </tbody>
 </table>
+</form>

@@ -18,10 +18,10 @@ product:Product= new Product();
 
   }
   onSaveProduct(){
-console.log(this.product);
-// this.service.products.push(this.product);
 this.service.addProductToBackend(this.product);
 
   }
+
+  
 
 }
