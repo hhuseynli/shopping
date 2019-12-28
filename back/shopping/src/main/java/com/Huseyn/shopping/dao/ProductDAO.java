@@ -50,26 +50,61 @@ public class ProductDAO {
 	public Integer save(Product product) {
 		Integer id=0;
 		try {
-			String query="INSERT into product(name,description,price) values(?,?,?);";			
 			Connection con= source.getConnection();
-			PreparedStatement statement = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-			statement.setString(1, product.getName());
-			statement.setString(2, product.getDescription());
-			statement.setInt(3, product.getPrice());
-			statement.executeUpdate();
-			ResultSet res= statement.getGeneratedKeys();
-			while(res.next()){
-				id= res.getInt(1);
+			PreparedStatement statement = null;
+			ResultSet res=null;
+			System.out.println(product.getId());
+			if(product.getId()>0){
+				String query = "UPDATE product set name = ?, description = ?,price= ? where id ="+product.getId();
+				statement = con.prepareStatement(query);
+				statement.setString(1, product.getName());
+				statement.setString(2, product.getDescription());
+				statement.setInt(3, product.getPrice());
+				statement.executeUpdate();
+;		
+			}else{
+				String query="INSERT into product(name,description,price) values(?,?,?);";			
 				
+				statement = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+				statement.setString(1, product.getName());
+				statement.setString(2, product.getDescription());
+				statement.setInt(3, product.getPrice());
+				statement.executeUpdate();
+				res = statement.getGeneratedKeys();
+				while(res.next()){
+					id= res.getInt(1);
+					
+			
 			}
+			
 			con.close();
 			statement.close();
-			res.close();
 			
-		} catch (Exception e) {
+			if(res!=null){
+			res.close();
+			}
+			
+			}
+			}catch (Exception e) {
 			e.printStackTrace();
 		}
 		return id;
+		
+	}
+
+	public void deleteSel(Integer i) {
+		try {
+				
+				String query="DELETE FROM spring_ng_huseyn_shopping.product WHERE id = "+i;
+				Connection con= source.getConnection();
+				PreparedStatement statement= con.prepareStatement(query);
+				statement.executeUpdate();
+				statement.close();
+				con.close();
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 

@@ -7,6 +7,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductService {
 products:Product[]=[];
+
+selectedProduct:Product;
+
   constructor( private http:HttpClient) { }
 
   addProductToBackend(product:Product ){
@@ -19,5 +22,9 @@ products:Product[]=[];
   }
   getAllProducts(){
     return this.http.get<Product[]>("http://localhost:8080/products/product") ;
+  }
+
+ public deleteById(id:number){
+    return this.http.delete(`http://localhost:8080/products/${id}`);
   }
 }

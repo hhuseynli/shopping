@@ -15,10 +15,14 @@ product:Product= new Product();
   constructor(private service:ProductService ) { }
 
   ngOnInit() {
-
+    if(this.service.selectedProduct!=null){
+      this.product = this.service.selectedProduct;
+    }
   }
   onSaveProduct(){
 this.service.addProductToBackend(this.product);
+this.service.selectedProduct=null;
+
 
   }
 

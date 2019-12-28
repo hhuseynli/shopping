@@ -1,8 +1,11 @@
 <button (click)="onSaveProduct()" class="btn btn-success">Add Product</button>
-
+<button (click)="onDeleteProduct()" class="btn btn-danger">Delete</button>
+<button (click)="onUpdateProduct()" class="btn btn-primary">Update</button>
+<br>
 <button (click)="loadRows()">Refresh</button>
 
-<input placeholder="Search" [(ngModel)]="searchText" type="text" (keyup)="quickSearch()"/>
+<input placeholder="Search" [(ngModel)]="searchText" type="text" (keyup)="quickSearch()" class="search"/>
+
 <ag-grid-angular
    #agGrid
    style="width: 100%;
