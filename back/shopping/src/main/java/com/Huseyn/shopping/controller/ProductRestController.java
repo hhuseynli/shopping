@@ -20,7 +20,7 @@ import com.Huseyn.shopping.model.Product;
 public class ProductRestController{
 
 	@Autowired
-	ProductDAO productDAO = new ProductDAO();
+	ProductDAO productDAO;
 
 @RequestMapping(path="/product", method=RequestMethod.GET)
 public List<Product> getProduct() {

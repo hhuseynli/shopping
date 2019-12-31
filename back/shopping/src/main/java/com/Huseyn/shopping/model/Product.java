@@ -8,7 +8,17 @@ public class Product {
 		private String description;
 		private File image;
 		private Integer price;
-		
+		private Category category;
+		private String city;
+		private String seller;
+		private String phone;
+		private String email;
+		public Integer getId() {
+			return id;
+		}
+		public void setId(Integer id) {
+			this.id = id;
+		}
 		public String getName() {
 			return name;
 		}
@@ -21,11 +31,11 @@ public class Product {
 		public void setDescription(String description) {
 			this.description = description;
 		}
-		public File getFile() {
+		public File getImage() {
 			return image;
 		}
-		public void setFile(File File) {
-			this.image = File;
+		public void setImage(File image) {
+			this.image = image;
 		}
 		public Integer getPrice() {
 			return price;
@@ -33,12 +43,37 @@ public class Product {
 		public void setPrice(Integer price) {
 			this.price = price;
 		}
-		public Integer getId() {
-			return id;
+		public Category getCategory() {
+			return category;
 		}
-		public void setId(Integer id) {
-			this.id = id;
+		public void setCategory(Category category) {
+			this.category = category;
 		}
+		public String getCity() {
+			return city;
+		}
+		public void setCity(String city) {
+			this.city = city;
+		}
+		public String getSeller() {
+			return seller;
+		}
+		public void setSeller(String sellerName) {
+			this.seller = sellerName;
+		}
+		public String getPhone() {
+			return phone;
+		}
+		public void setPhone(String phone) {
+			this.phone = phone;
+		}
+		public String getEmail() {
+			return email;
+		}
+		public void setEmail(String email) {
+			this.email = email;
+		}
+		
 		
 		} 
 

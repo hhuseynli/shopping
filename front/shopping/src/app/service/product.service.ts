@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../component/model/product';
+import { Product, Category } from '../component/model/product';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -26,5 +26,10 @@ selectedProduct:Product;
 
  public deleteById(id:number){
     return this.http.delete(`http://localhost:8080/products/${id}`);
+  }
+
+  public getAllCategories(){
+    return this.http.get<Category[]>("http://localhost:8080/categories/category");
+
   }
 }

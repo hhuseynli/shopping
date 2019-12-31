@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../model/product';
+import { Product, Category } from '../model/product';
 import { ProductService } from 'src/app/service/product.service';
 
 
@@ -9,23 +9,31 @@ import { ProductService } from 'src/app/service/product.service';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
-product:Product= new Product();
+  product: Product = new Product();
+  categories:Category[]= [];
 
-//
-  constructor(private service:ProductService ) { }
+  //
+  constructor(private service: ProductService) { }
 
   ngOnInit() {
-    if(this.service.selectedProduct!=null){
+    this.service.getAllCategories().subscribe(
+      resp=>{
+        this.categories = resp;
+      }
+    );
+
+
+    if (this.service.selectedProduct != null) {
       this.product = this.service.selectedProduct;
     }
+
+    
   }
-  onSaveProduct(){
-this.service.addProductToBackend(this.product);
-this.service.selectedProduct=null;
-
-
+  onSaveProduct() {
+    this.service.addProductToBackend(this.product);
+    this.service.selectedProduct = null;
   }
 
-  
+
 
 }

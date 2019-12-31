@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgGridModule } from 'ag-grid-angular';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
+import { AddCategoryComponent } from './component/add-category/add-category.component';
 
 
 
@@ -18,7 +19,8 @@ import { HttpClientModule} from '@angular/common/http';
   declarations: [
     AppComponent,
     ProductListComponent,
-    AddProductComponent
+    AddProductComponent,
+    AddCategoryComponent
   ],
   imports: [
     BrowserModule,
