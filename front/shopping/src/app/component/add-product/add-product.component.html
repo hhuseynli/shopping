@@ -1,7 +1,7 @@
 
 <form #productForm="ngForm" (ngSubmit)="!productForm.invalid && onSaveProduct()">
-<h3>Add a product</h3>
-<table>
+<h5>Add a product</h5>
+<table class="table">
     <tbody>
         <tr>
             <td>Name:</td>
@@ -12,7 +12,12 @@
             <td>Description:</td>
             <td><textarea [(ngModel)]="product.description" name="desc" required></textarea></td>
         </tr>
-
+        <tr>
+            <td>Category:</td>
+            <td><select [(ngModel)]="product.category.id" name="category" required>
+                <option [value]="c.id" *ngFor = "let c of categories">{{c.name}}</option>
+            </select></td>
+        </tr>
         <tr>
             <td>Image:</td>
             <td><input type="file" [(ngModel)]="product.image" name="img" required></td>
@@ -20,7 +25,23 @@
 
         <tr>
             <td>Price:</td>
-            <td><input type="number" [(ngModel)]="product.price" name="price" required></td>
+            <td><input type="number" [(ngModel)]="product.price" name="price" required ></td>
+        </tr>
+        <tr>
+            <td>City:</td>
+            <td><input type="text" [(ngModel)]="product.city" name="city" required ></td>
+        </tr>
+        <tr>
+            <td>Seller:</td>
+            <td><input type="text" [(ngModel)]="product.seller" name="name" required ></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" [(ngModel)]="product.email" name="email" required ></td>
+        </tr>
+        <tr>
+            <td>Phone Number:</td>
+            <td><input type="text" [(ngModel)]="product.phone" name="number" required maxlength= 20></td>
         </tr>
         <tr>
 

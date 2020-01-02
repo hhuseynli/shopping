@@ -22,11 +22,11 @@ public class ProductRestController{
 	@Autowired
 	ProductDAO productDAO;
 
-@RequestMapping(path="/product", method=RequestMethod.GET)
-public List<Product> getProduct() {
-return productDAO.getAll() ;
-
-} 
+	@RequestMapping(path="/product",method=RequestMethod.GET)
+	public List<Product> getProducts(){
+		return productDAO.getAll();
+		
+	}
 
 @RequestMapping(path="/product", method=RequestMethod.POST)
 public Product addProduct(@RequestBody Product product) {

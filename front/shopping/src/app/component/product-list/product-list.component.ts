@@ -55,21 +55,22 @@ export class ProductListComponent implements OnInit {
     }else{
       alert("Select a row")
     } 
+    
   }
 
 
 
   columnDefs = [
     { headerName: 'ID', field: 'id', sortable: true, filter: true, checkboxSelection: true, width: 100 },
-    { headerName: 'Name', field: 'name', sortable: true, filter: true },
-    { headerName: 'Category', field: 'category.name', sortable: true, filter: true },
-    { headerName: 'Image', field: 'image', sortable: true, filter: false },
-    { headerName: 'Description', field: 'description', sortable: true, filter: true },
-    { headerName: 'Price', field: 'price', sortable: true, filter: true },
-    { headerName: 'City', field: 'city', sortable: true, filter: true },
-    { headerName: 'Seller', field: 'seller', sortable: true, filter: true },
-    { headerName: 'Phone', field: 'phone', sortable: true, filter: true },
-    { headerName: 'Email', field: 'email', sortable: true, filter: true },
+    { headerName: 'Name', field: 'name', sortable: true, filter: true,width: 150  },
+    { headerName: 'Category', field: 'category.name', sortable: true, filter: true, width: 120  },
+    { headerName: 'Image', field: 'image', sortable: true, filter: false, width: 50 },
+    { headerName: 'Description', field: 'description', sortable: true, filter: true,width: 250  },
+    { headerName: 'Price', field: 'price', sortable: true, filter: true,width: 100  },
+    { headerName: 'City', field: 'city', sortable: true, filter: true, width: 80  },
+    { headerName: 'Seller', field: 'seller', sortable: true, filter: true, width: 100  },
+    { headerName: 'Phone', field: 'phone', sortable: true, filter: true, width: 150  },
+    { headerName: 'Email', field: 'email', sortable: true, filter: true,width: 150  },
 
 
 

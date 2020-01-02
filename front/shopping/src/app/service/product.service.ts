@@ -6,13 +6,12 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProductService {
-products:Product[]=[];
 
 selectedProduct:Product;
 
   constructor( private http:HttpClient) { }
 
-  addProductToBackend(product:Product ){
+  public addProductToBackend(product:Product ){
     this.http.post<Product>("http://localhost:8080/products/product", product).subscribe(
       ans=>{
         console.log(ans);
@@ -20,7 +19,7 @@ selectedProduct:Product;
       }
     );
   }
-  getAllProducts(){
+  public getAllProducts(){
     return this.http.get<Product[]>("http://localhost:8080/products/product") ;
   }
 
@@ -31,5 +30,13 @@ selectedProduct:Product;
   public getAllCategories(){
     return this.http.get<Category[]>("http://localhost:8080/categories/category");
 
+  }
+  public addCategoryToBackend(category:Category){
+    this.http.post<Category>('http://localhost:8080/categories/category',category).subscribe(
+      
+      ans=>{
+        alert('Category added successfully');
+      }
+    );
   }
 }

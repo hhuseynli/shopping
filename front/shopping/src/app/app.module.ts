@@ -37,6 +37,6 @@ import { AddCategoryComponent } from './component/add-category/add-category.comp
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[AddProductComponent]
+  entryComponents:[AddProductComponent,AddCategoryComponent]
 })
 export class AppModule { }

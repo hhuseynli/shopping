@@ -24,11 +24,11 @@ public class ProductDAO {
 	public  List<Product> getAll() {
 	List<Product>list=new ArrayList<>();
 	try {
-		String query="SELECT  * FROM product_view";
+		String query="SELECT * FROM spring_ng_huseyn_shopping.product_view;";
 		Connection con = source.getConnection();
 		PreparedStatement statement = con.prepareStatement(query);
 		ResultSet res= statement.executeQuery();
-		if(res.next()){
+		while(res.next()){
 			Product p = new Product();
 			p.setId(res.getInt("id"));
 			p.setName(res.getString("name"));
@@ -62,13 +62,17 @@ public class ProductDAO {
 			Connection con= source.getConnection();
 			PreparedStatement statement = null;
 			ResultSet res=null;
-			System.out.println(product.getId());
-			if(product.getId()>0){
-				String query = "UPDATE product set name = ?, description = ?,price= ? where id ="+product.getId();
+					if(product.getId()>0){
+				String query = "UPDATE product set name = ?, description = ?,price= ?,city=?,seller=?,phone=?,email=?,category_id=? where id ="+product.getId();
 				statement = con.prepareStatement(query);
 				statement.setString(1, product.getName());
 				statement.setString(2, product.getDescription());
 				statement.setInt(3, product.getPrice());
+				statement.setString(4, product.getCity());
+				statement.setString(5, product.getSeller());
+				statement.setString(6, product.getPhone());
+				statement.setString(7, product.getEmail());
+				statement.setInt(8, product.getCategory().getId());
 				statement.executeUpdate();
 ;		
 			}else{
@@ -85,7 +89,7 @@ public class ProductDAO {
 				statement.setInt(8, product.getCategory().getId());
 				statement.executeUpdate();
 				res = statement.getGeneratedKeys();
-				if(res.next()){
+				while(res.next()){
 					id= res.getInt(1);
 					
 			

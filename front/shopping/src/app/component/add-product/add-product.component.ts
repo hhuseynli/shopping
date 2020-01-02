@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product, Category } from '../model/product';
 import { ProductService } from 'src/app/service/product.service';
+import { MatDialog } from '@angular/material';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class AddProductComponent implements OnInit {
   categories:Category[]= [];
 
   //
-  constructor(private service: ProductService) { }
+  constructor(private service: ProductService, private matDialog:MatDialog) { }
 
   ngOnInit() {
     this.service.getAllCategories().subscribe(
@@ -32,6 +33,8 @@ export class AddProductComponent implements OnInit {
   onSaveProduct() {
     this.service.addProductToBackend(this.product);
     this.service.selectedProduct = null;
+    this.matDialog.closeAll();
+
   }
 
 

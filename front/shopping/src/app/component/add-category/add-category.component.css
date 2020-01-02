@@ -1,0 +1,11 @@
+.ng-valid:not(form){
+    border-left: green 4px solid;
+}
+.ng-invalid:not(form){
+    border-left: red 4px solid;
+}
+input, textarea{
+    width:100%;
+    margin: 10px 5px ;
+    max-height: 180px;
+}

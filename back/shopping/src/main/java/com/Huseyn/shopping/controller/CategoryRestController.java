@@ -1,19 +1,13 @@
 package com.Huseyn.shopping.controller;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
+
 import java.util.List;
-
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.Huseyn.shopping.dao.CategoryDAO;
 import com.Huseyn.shopping.model.Category;
 
@@ -31,5 +25,14 @@ public class CategoryRestController {
 		
 		return categoryDAO.getAll();
 	}
+	
+	@RequestMapping(path = "/category",method= RequestMethod.POST)
+	public Integer saveCategory(@RequestBody Category category){
+		Integer newId=  categoryDAO.save(category);
+		category.setId(newId);
+		return newId;
+	
+	}
+	
 	
 }

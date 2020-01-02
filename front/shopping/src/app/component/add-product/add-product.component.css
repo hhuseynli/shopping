@@ -1,6 +1,6 @@
-input, textarea{
+input, textarea,select{
     width:100%;
-    margin: 10px 5px ;
+    margin: 0 5px ;
     max-height: 180px;
 }
 
@@ -9,4 +9,7 @@ input, textarea{
 }
 .ng-valid:not(form){
     border-left: 4px solid green;
+}
+td{
+    padding: 7px;
 }

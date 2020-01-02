@@ -2,7 +2,12 @@ package com.Huseyn.shopping.model;
 
 public class Category {
 	private Integer id;
+	private String name;
 	
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", name=" + name + "]";
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -15,6 +20,6 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
-	private String name;
+	
 	
 }
