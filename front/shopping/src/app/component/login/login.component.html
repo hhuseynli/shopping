@@ -1,1 +1,22 @@
-<p>login works!</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+
+                <td>Username : </td>
+                <td><input type="text" placeholder="Enter you username." [(ngModel)]="username"></td>
+            </tr>
+            <tr>
+
+                <td>Password : </td>
+                <td><input type="password" placeholder="Enter you password." [(ngModel)]="password"></td>
+            </tr>
+            <tr>
+
+
+                <td><button (click)="onLogin()" class="btn btn-success"> Log in </button></td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>

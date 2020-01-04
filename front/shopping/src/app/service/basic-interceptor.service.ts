@@ -7,21 +7,25 @@ import { HttpInterceptor, HttpRequest, HttpHandler } from '@angular/common/http'
 export class BasicInterceptorService implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler) {
-    let username: string = 'HuseynLi2007';
-    let password: string = 'ProGrammer1243';
-    let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
+    let username: string = sessionStorage.getItem('username');
+    let password: string =  sessionStorage.getItem('password');
+    if(username && password){
+      let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
+      request = request.clone(
 
-    request = request.clone(
-
-      {
-
-        setHeaders: {
-          Authorization: basicAuthHeaderString
+        {
+  
+          setHeaders: {
+            Authorization: basicAuthHeaderString
+          }
+  
         }
-
-      }
-    );
+      );
+    }else{
+      alert('Username or password is empty')
+    }
     
+
     return next.handle(request);
   }
 
