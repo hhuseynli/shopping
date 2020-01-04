@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product, Category } from '../model/product';
 import { ProductService } from 'src/app/service/product.service';
 import { MatDialog } from '@angular/material';
+import { CategoryService } from 'src/app/service/category.service';
 
 
 @Component({
@@ -14,10 +15,10 @@ export class AddProductComponent implements OnInit {
   categories:Category[]= [];
 
   //
-  constructor(private service: ProductService, private matDialog:MatDialog) { }
+  constructor(private service: ProductService, private matDialog:MatDialog, private c_service: CategoryService) { }
 
   ngOnInit() {
-    this.service.getAllCategories().subscribe(
+    this.c_service.getAllCategories().subscribe(
       resp=>{
         this.categories = resp;
       }

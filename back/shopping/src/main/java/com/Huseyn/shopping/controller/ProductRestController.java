@@ -18,6 +18,7 @@ import com.Huseyn.shopping.model.Product;
 @RequestMapping(path="/products" )
 @CrossOrigin(origins={"http://localhost:4200/"})
 public class ProductRestController{
+	
 
 	@Autowired
 	ProductDAO productDAO;

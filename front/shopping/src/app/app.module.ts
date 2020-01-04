@@ -9,8 +9,10 @@ from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgGridModule } from 'ag-grid-angular';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AddCategoryComponent } from './component/add-category/add-category.component';
+import { BasicInterceptorService } from './service/basic-interceptor.service';
+import { LoginComponent } from './component/login/login.component';
 
 
 
@@ -20,7 +22,8 @@ import { AddCategoryComponent } from './component/add-category/add-category.comp
     AppComponent,
     ProductListComponent,
     AddProductComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,7 @@ import { AddCategoryComponent } from './component/add-category/add-category.comp
     HttpClientModule
 
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS ,useClass:BasicInterceptorService,multi:true}],
   bootstrap: [AppComponent],
   entryComponents:[AddProductComponent,AddCategoryComponent]
 })
