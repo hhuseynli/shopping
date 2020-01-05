@@ -7,10 +7,9 @@ import { HttpInterceptor, HttpRequest, HttpHandler } from '@angular/common/http'
 export class BasicInterceptorService implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler) {
-    let username: string = sessionStorage.getItem('username');
-    let password: string =  sessionStorage.getItem('password');
-    if(username && password){
-      let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
+    let authorization: string = sessionStorage.getItem('authorization');
+    if(authorization){
+      let basicAuthHeaderString = authorization;
       request = request.clone(
 
         {
@@ -22,7 +21,6 @@ export class BasicInterceptorService implements HttpInterceptor {
         }
       );
     }else{
-      alert('Username or password is empty')
     }
     
 
@@ -32,6 +30,5 @@ export class BasicInterceptorService implements HttpInterceptor {
 
 
 
-  constructor() { }
 
 }

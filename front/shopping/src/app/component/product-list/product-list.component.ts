@@ -36,7 +36,6 @@ export class ProductListComponent implements OnInit {
         cavab=>{
           alert("Selected row(s) deleted");
           this.loadRows();
-          console.log('The product in id:'+cavab+"deleted")
           }
         );    
     }
