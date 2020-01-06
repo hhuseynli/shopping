@@ -13,6 +13,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AddCategoryComponent } from './component/add-category/add-category.component';
 import { BasicInterceptorService } from './service/basic-interceptor.service';
 import { LoginComponent } from './component/login/login.component';
+import { MenuComponent } from './component/menu/menu.component';
+import { LogOutComponent } from './component/log-out/log-out.component';
 
 
 
@@ -23,7 +25,9 @@ import { LoginComponent } from './component/login/login.component';
     ProductListComponent,
     AddProductComponent,
     AddCategoryComponent,
-    LoginComponent
+    LoginComponent,
+    MenuComponent,
+    LogOutComponent
   ],
   imports: [
     BrowserModule,
