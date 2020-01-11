@@ -12,7 +12,9 @@ export class LogOutComponent implements OnInit {
 
   ngOnInit() {
     sessionStorage.clear();
-    this.router.navigate(["login"]);
+    setTimeout(()=>{
+      this.router.navigate(["login"]);
+    },1000);
   }
 
 }
