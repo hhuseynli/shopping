@@ -1,1 +1,26 @@
-<p>sign-up works!</p>
+<form #userForm="ngForm" (ngSubmit)="!userForm.invalid && onNewAccount()" >
+    <table>
+        <tbody>
+            <tr>
+                <td>Full Name : </td>
+                <td><input type="Text" placeholder="Enter your full Name." [(ngModel)]="user.fullName" name="fName" required></td>
+            </tr>
+            <tr>
+                <td>Username : </td>
+                <td><input type="text" placeholder="Enter your username." [(ngModel)]="user.username" name="userName" required ></td>
+            </tr>
+            <tr>
+
+                <td>Password : </td>
+                <td><input type="password" placeholder="Enter your password." [(ngModel)]="user.password" name="userPassword" required></td>
+            </tr>
+
+            <tr>
+                <td>
+                <button class="btn btn-primary" type="submit">Create an account</button>
+            </td>
+            </tr>
+        </tbody>
+
+    </table>
+</form>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
+import { SignUpComponent } from '../sign-up/sign-up.component';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
   password: string = '';
 
   onSignUp(){
-    
+    this.matDialog.open(SignUpComponent);
   }
 
 

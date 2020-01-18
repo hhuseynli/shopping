@@ -18,6 +18,11 @@ export class UserService {
   constructor(private http:HttpClient) { }
 
   public createAccount(user:User){
-    this.http.post<User>("http://localhost:8080/users",user);
+    this.http.post<User>("http://localhost:8080/users",user).subscribe(
+      ans=>{
+        alert("Success");
+        console.log(ans);
+      }
+    );
   }
 }

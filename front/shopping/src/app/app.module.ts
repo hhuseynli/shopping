@@ -46,6 +46,6 @@ import { SignUpComponent } from './component/sign-up/sign-up.component';
   ],
   providers: [{provide:HTTP_INTERCEPTORS ,useClass:BasicInterceptorService,multi:true}],
   bootstrap: [AppComponent],
-  entryComponents:[AddProductComponent,AddCategoryComponent]
+  entryComponents:[AddProductComponent,AddCategoryComponent,SignUpComponent]
 })
 export class AppModule { }

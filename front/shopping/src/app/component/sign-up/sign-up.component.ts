@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../model/product';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor() { }
+  user:User=new User();
+  
+
+  constructor(private service:UserService) { }
 
   ngOnInit() {
+
+  }
+
+  onNewAccount(){
+    
+    this.service.createAccount(this.user);
   }
 
 }
