@@ -17,7 +17,7 @@ import com.Huseyn.shopping.dao.UserDAO;
 import com.Huseyn.shopping.model.User;
 
 @RestController
-@RequestMapping
+@RequestMapping(path="/users")
 @CrossOrigin(origins={"http://localhost:4200"})
 public class UserRestController {
 	
