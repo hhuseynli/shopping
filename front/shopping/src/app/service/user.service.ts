@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../component/model/product';
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +15,9 @@ export class UserService {
     return result;
   }
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
+
+  public createAccount(user:User){
+    this.http.post<User>("http://localhost:8080/users",user);
+  }
 }
