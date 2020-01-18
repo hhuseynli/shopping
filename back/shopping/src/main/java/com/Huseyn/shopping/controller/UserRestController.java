@@ -38,6 +38,7 @@ public class UserRestController {
 	@PostMapping
 	public User addUser(@RequestBody User user){
 		user.setPassword("{noop}"+user.getPassword());
+		user.setEnabled(Byte.valueOf((byte) 1));
 		User savedUser=userDao.save(user);
 		authDao.addAuthority(user.getUsername());
 		return savedUser;
