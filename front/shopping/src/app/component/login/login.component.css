@@ -5,4 +5,5 @@ input{
 }
 button{
     border-radius: 30px;
+    margin:0 5px 0 5px;
 }

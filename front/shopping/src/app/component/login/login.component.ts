@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -11,13 +12,17 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
   }
-  constructor(private http: HttpClient, private router:Router) {
+  constructor(private http: HttpClient, private router:Router, private matDialog:MatDialog) {
 
   }
 
 
   username: string = '';
   password: string = '';
+
+  onSignUp(){
+    
+  }
 
 
   onLogin() {
