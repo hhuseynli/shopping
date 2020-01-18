@@ -38,6 +38,7 @@ public class UserRestController {
 	}
 	@PutMapping(path="/update")
 	public User updateUser(@RequestBody User user){
+		user.setPassword("{noop}"+user.getPassword());
 		return userDao.save(user);
 	}
 	@DeleteMapping(path="/delete/{user}")
