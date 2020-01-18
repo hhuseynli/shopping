@@ -23,14 +23,13 @@ public class CategoryRestController {
 	@RequestMapping(path= "/category",method=RequestMethod.GET)
 	public List<Category> getCategories(){
 		
-		return categoryDAO.getAll();
+		return categoryDAO.findAll();
 	}
 	
 	@RequestMapping(path = "/category",method= RequestMethod.POST)
 	public Integer saveCategory(@RequestBody Category category){
-		Integer newId=  categoryDAO.save(category);
-		category.setId(newId);
-		return newId;
+		return categoryDAO.save(category).getId();
+		
 	
 	}
 	
