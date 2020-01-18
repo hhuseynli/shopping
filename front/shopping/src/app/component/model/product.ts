@@ -22,5 +22,12 @@ export class Category{
     private name:string;
 }
 
+export class User{
+    private username:string;
+    private password:string;
+    private enabled:number;
+    private fullName:string;
+}
+
 
 
