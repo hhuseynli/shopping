@@ -16,5 +16,5 @@ public class User {
 private String username;
 private String password;
 private Byte enabled;
-private String full_Name;
+private String fullName;
 }
