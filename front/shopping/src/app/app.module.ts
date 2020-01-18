@@ -15,6 +15,7 @@ import { BasicInterceptorService } from './service/basic-interceptor.service';
 import { LoginComponent } from './component/login/login.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { LogOutComponent } from './component/log-out/log-out.component';
+import { SignUpComponent } from './component/sign-up/sign-up.component';
 
 
 
@@ -27,7 +28,8 @@ import { LogOutComponent } from './component/log-out/log-out.component';
     AddCategoryComponent,
     LoginComponent,
     MenuComponent,
-    LogOutComponent
+    LogOutComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
