@@ -28,6 +28,10 @@ export class AddProductComponent implements OnInit {
     if (this.service.selectedProduct != null) {
       this.product = this.service.selectedProduct;
     }
+    if(this.matDialog.afterAllClosed){
+      this.service.selectedProduct=null;
+    }
+
 
     
   }
