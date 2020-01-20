@@ -4,7 +4,7 @@ export class Product{
  private id:number = 0;
  private name:string;
  private description: string;
- private image:File;
+ private image:string;
  private price:number;
  private category:Category;
  private city:string;

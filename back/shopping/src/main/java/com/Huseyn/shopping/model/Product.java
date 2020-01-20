@@ -1,6 +1,6 @@
 package com.Huseyn.shopping.model;
 
-import java.io.File;
+
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +12,7 @@ public class Product {
 		private Integer id;
 		private String name;
 		private String description;
-		private File image;
+		private String image;
 		private Integer price;
 		private Category category;
 		private String city;
