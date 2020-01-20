@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, Category } from '../model/product';
+import { Product, Category, ImageBean } from '../model/product';
 import { ProductService } from 'src/app/service/product.service';
 import { MatDialog } from '@angular/material';
 import { CategoryService } from 'src/app/service/category.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class AddProductComponent implements OnInit {
   categories:Category[]= [];
 
   //
-  constructor(private service: ProductService, private matDialog:MatDialog, private c_service: CategoryService) { }
+  constructor(private service: ProductService, private matDialog:MatDialog, private c_service: CategoryService, private http:HttpClient) { }
 
   ngOnInit() {
     this.c_service.getAllCategories().subscribe(
@@ -39,6 +40,17 @@ export class AddProductComponent implements OnInit {
     this.service.addProductToBackend(this.product);
     this.service.selectedProduct = null;
     this.matDialog.closeAll();
+
+  }
+  fileSelected(event){
+    let myImage= event.target.files[0];
+    let formData:FormData = new FormData();
+    formData.append('file',myImage);
+    this.http.post<ImageBean>('http://localhost:8080/fileupload',formData).subscribe(
+      resp=>{
+        console.log(resp);
+      }
+    );
 
   }
 

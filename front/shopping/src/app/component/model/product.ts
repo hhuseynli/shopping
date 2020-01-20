@@ -28,6 +28,10 @@ export class User{
     private enabled:number;
     private fullName:string;
 }
+export class ImageBean{
+private id:number;
+private name:string;
+}
 
 
 
