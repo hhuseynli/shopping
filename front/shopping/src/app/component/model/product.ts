@@ -1,16 +1,16 @@
 
 
 export class Product{
- private id:number = 0;
- private name:string;
- private description: string;
- private image:string;
- private price:number;
- private category:Category;
- private city:string;
- private seller:string;
- private phone:number;
- private email:string;
+    public id:number = 0;
+ public name:string;
+ public description: string;
+ public image:string;
+ public price:number;
+ public category:Category;
+ public city:string;
+ public seller:string;
+ public phone:number;
+ public email:string;
 
  constructor(){
      this.category= new Category();
@@ -18,19 +18,19 @@ export class Product{
 }
 
 export class Category{
-    private id:number;
-    private name:string;
+    public id:number;
+    public name:string;
 }
 
 export class User{
-    private username:string;
-    private password:string;
-    private enabled:number;
-    private fullName:string;
+    public username:string;
+    public password:string;
+    public enabled:number;
+    public fullName:string;
 }
 export class ImageBean{
-private id:number;
-private name:string;
+public id:number;
+public image:string;
 }
 
 
