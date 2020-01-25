@@ -63,7 +63,7 @@ export class ProductListComponent implements OnInit {
     { headerName: 'ID', field: 'id', sortable: true, filter: true, checkboxSelection: true, width: 100 },
     { headerName: 'Name', field: 'name', sortable: true, filter: true,width: 150  },
     { headerName: 'Category', field: 'category.name', sortable: true, filter: true, width: 120  },
-    { headerName: 'Image', field: 'image', sortable: true, filter: false, width: 50 },
+    { headerName: 'Image', field: 'image', sortable: true, filter: false, width: 80 },
     { headerName: 'Description', field: 'description', sortable: true, filter: true,width: 250  },
     { headerName: 'Price', field: 'price', sortable: true, filter: true,width: 100  },
     { headerName: 'City', field: 'city', sortable: true, filter: true, width: 80  },

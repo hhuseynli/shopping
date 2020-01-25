@@ -35,6 +35,7 @@ public class ProductDAO {
 			p.setDescription(res.getString("description"));
 			p.setPrice(res.getInt("price"));
 			p.setCity(res.getString("city"));
+			p.setImage(res.getString("image"));
 			p.setPhone(res.getString("phone"));
 			p.setEmail(res.getString("email"));
 			p.setSeller(res.getString("seller"));
@@ -63,30 +64,32 @@ public class ProductDAO {
 			PreparedStatement statement = null;
 			ResultSet res=null;
 					if(product.getId()>0){
-				String query = "UPDATE product set name = ?, description = ?,price= ?,city=?,seller=?,phone=?,email=?,category_id=? where id ="+product.getId();
+				String query = "UPDATE spring_ng_huseyn_shopping.product set name = ?, description = ?,image=?,price= ?,city=?,seller=?,phone=?,email=?,category_id=? where id ="+product.getId();
 				statement = con.prepareStatement(query);
 				statement.setString(1, product.getName());
 				statement.setString(2, product.getDescription());
-				statement.setInt(3, product.getPrice());
-				statement.setString(4, product.getCity());
-				statement.setString(5, product.getSeller());
-				statement.setString(6, product.getPhone());
-				statement.setString(7, product.getEmail());
-				statement.setInt(8, product.getCategory().getId());
+				statement.setString(3, product.getImage());
+				statement.setInt(4, product.getPrice());
+				statement.setString(5, product.getCity());
+				statement.setString(6, product.getSeller());
+				statement.setString(7, product.getPhone());
+				statement.setString(8, product.getEmail());
+				statement.setInt(9, product.getCategory().getId());
 				statement.executeUpdate();
 ;		
 			}else{
-				String query="INSERT into product(name,description,price,city,seller,phone,email,category_id) values(?,?,?,?,?,?,?,?);";			
+				String query="INSERT into spring_ng_huseyn_shopping.product(name,description,image,price,city,seller,phone,email,category_id) values(?,?,?,?,?,?,?,?,?);";			
 				
 				statement = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 				statement.setString(1, product.getName());
 				statement.setString(2, product.getDescription());
-				statement.setInt(3, product.getPrice());
-				statement.setString(4, product.getCity());
-				statement.setString(5, product.getSeller());
-				statement.setString(6, product.getPhone());
-				statement.setString(7, product.getEmail());
-				statement.setInt(8, product.getCategory().getId());
+				statement.setString(3, product.getImage());
+				statement.setInt(4, product.getPrice());
+				statement.setString(5, product.getCity());
+				statement.setString(6, product.getSeller());
+				statement.setString(7, product.getPhone());
+				statement.setString(8, product.getEmail());
+				statement.setInt(9, product.getCategory().getId());
 				statement.executeUpdate();
 				res = statement.getGeneratedKeys();
 				while(res.next()){
