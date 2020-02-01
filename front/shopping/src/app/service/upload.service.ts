@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ImageBean } from '../component/model/product';
+import { API_URL } from '../constants';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,9 @@ import { ImageBean } from '../component/model/product';
 export class UploadService {
 
   constructor(private http:HttpClient) { }
+  download:string="";
 
       uploadImage(formData:FormData){
-        return this.http.post<ImageBean>('http://localhost:8080/fileupload',formData);
+        return this.http.post<ImageBean>(`${API_URL}/fileupload`,formData);
       }
 }

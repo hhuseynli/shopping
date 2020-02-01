@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product, Category } from '../component/model/product';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { API_URL } from '../constants';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ selectedProduct:Product;
   constructor( private http:HttpClient) { }
 
   public addProductToBackend(product:Product ){
-    this.http.post<Product>("http://localhost:8080/products/product", product).subscribe(
+    this.http.post<Product>(`${API_URL}/products/product`, product).subscribe(
       ans=>{
         console.log(ans);
         alert('Product Added Successfully');
@@ -20,11 +21,11 @@ selectedProduct:Product;
     );
   }
   public getAllProducts(){
-    return this.http.get<Product[]>("http://localhost:8080/products/product");
+    return this.http.get<Product[]>(`${API_URL}/products/product`);
   }
 
  public deleteById(id:number){
-    return this.http.delete(`http://localhost:8080/products/${id}`);
+    return this.http.delete(`${API_URL}/products/${id}`);
   }
 
   

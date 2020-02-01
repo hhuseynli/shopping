@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../component/model/product';
+import { API_URL } from '../constants';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class UserService {
   constructor(private http:HttpClient) { }
 
   public createAccount(user:User){
-    this.http.post<User>("http://localhost:8080/users",user).subscribe(
+    this.http.post<User>(`${API_URL}/users`,user).subscribe(
       ans=>{
         alert("Success");
         console.log(ans);

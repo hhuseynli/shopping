@@ -3,6 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { SignUpComponent } from '../sign-up/sign-up.component';
+import { API_URL } from 'src/app/constants';
 
 @Component({
   selector: 'app-login',
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
       }
     );
 
-    this.http.get<boolean>('http://localhost:8080/validations', {
+    this.http.get<boolean>(`${API_URL}/validations`, {
       headers: HeaderObject
     }).subscribe(
       success => {
