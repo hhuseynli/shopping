@@ -16,6 +16,9 @@ import { LoginComponent } from './component/login/login.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { LogOutComponent } from './component/log-out/log-out.component';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { DataTablesModule } from 'angular-datatables';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { ImageViewComponent } from './component/image-view/image-view.component';
 
 
 
@@ -29,7 +32,8 @@ import { SignUpComponent } from './component/sign-up/sign-up.component';
     LoginComponent,
     MenuComponent,
     LogOutComponent,
-    SignUpComponent
+    SignUpComponent,
+    ImageViewComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,11 @@ import { SignUpComponent } from './component/sign-up/sign-up.component';
     MatProgressSpinnerModule,
     MatButtonModule,
     AgGridModule.withComponents([]),
-    HttpClientModule
+    HttpClientModule,
+    DataTablesModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType:'success',cancelButtonType:'danger',confirmText:'Confirm',cancelText:'Cancel'
+    })
 
   ],
   providers: [{provide:HTTP_INTERCEPTORS ,useClass:BasicInterceptorService,multi:true}],

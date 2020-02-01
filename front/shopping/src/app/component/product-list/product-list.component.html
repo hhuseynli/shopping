@@ -1,13 +1,12 @@
 <button (click)="onSaveCategory()" class="btn btn-success">Add Category</button>
 <button (click)="onSaveProduct()" class="btn btn-success">Add Product</button>
-<button (click)="onDeleteProduct()" class="btn btn-danger">Delete</button>
-<button (click)="onUpdateProduct()" class="btn btn-primary">Update</button>
+
 <br>
 <button (click)="loadRows()">Refresh</button>
+<!-- 
+<input placeholder="Search" [(ngModel)]="searchText" type="text" (keyup)="quickSearch()" class="search"/> -->
 
-<input placeholder="Search" [(ngModel)]="searchText" type="text" (keyup)="quickSearch()" class="search"/>
-
-<ag-grid-angular
+<!-- <ag-grid-angular
    #agGrid
    style="width: 100%;
 height: 500px;"
@@ -21,6 +20,53 @@ height: 500px;"
    (gridReady)="onGridReady($event)"  
 [floatingFilter]="true"
    >
-</ag-grid-angular>
+</ag-grid-angular> -->
+
+<table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+  [dtTrigger]="dtTrigger">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th>City</th>
+      <th>Seller</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Operations</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of products">
+      <td>{{ p.id }}</td>
+      <td>{{ p.name }}</td>
+      <td>{{ p.description }}</td>
+      <td><img [src]="download+p.image" [alt]="p.image" (click)="viewImage(p.image)"></td>
+      <td>{{ p.price }}</td>
+      <td>{{ p.category.name }}</td>
+      <td>{{ p.city }}</td>
+      <td>{{ p.seller }}</td>
+      <td>{{ p.phone }}</td>
+      <td>{{ p.email }}</td>
+      <td>
+         <button 
+class="btn btn-danger"
+mwlConfirmationPopover
+[popoverTitle]="popoverTitle" 
+[popoverMessage]="popoverMessage" 
+placement="top" 
+(confirm)="onDeleteProduct(true,p)" 
+(cancel)="onDeleteProduct(false,p)"  
+>Delete Product
+</button>
+         <button (click)="onUpdateProduct(p)" class="btn btn-primary">Update</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
 <hr>
 
