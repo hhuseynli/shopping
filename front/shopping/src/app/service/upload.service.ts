@@ -10,6 +10,7 @@ export class UploadService {
 
   constructor(private http:HttpClient) { }
   download:string="";
+  image:string="";
 
       uploadImage(formData:FormData){
         return this.http.post<ImageBean>(`${API_URL}/fileupload`,formData);

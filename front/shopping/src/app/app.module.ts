@@ -54,6 +54,6 @@ import { ImageViewComponent } from './component/image-view/image-view.component'
   ],
   providers: [{provide:HTTP_INTERCEPTORS ,useClass:BasicInterceptorService,multi:true}],
   bootstrap: [AppComponent],
-  entryComponents:[AddProductComponent,AddCategoryComponent,SignUpComponent]
+  entryComponents:[AddProductComponent,AddCategoryComponent,SignUpComponent,ImageViewComponent]
 })
 export class AppModule { }

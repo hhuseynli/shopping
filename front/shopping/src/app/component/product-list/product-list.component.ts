@@ -9,6 +9,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { API_URL } from 'src/app/constants';
 import { UploadService } from 'src/app/service/upload.service';
+import { ImageViewComponent } from '../image-view/image-view.component';
 
 @Component({
   selector: 'app-product-list',
@@ -67,7 +68,7 @@ export class ProductListComponent implements OnInit,OnDestroy {
   }
   viewImage(image){
     this.uploadService.image=image;
-    this.matDialog
+    this.matDialog.open(ImageViewComponent);
   }
 
 
