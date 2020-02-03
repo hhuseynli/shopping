@@ -47,7 +47,7 @@ export class ProductListComponent implements OnInit,OnDestroy {
     
   }
 
-  onDeleteProduct(status:boolean,product) {
+  onDeleteProduct(status:boolean,product:Product) {
   if(status){
       let id = product.id;
       this.service.deleteById(id).subscribe(
@@ -104,11 +104,15 @@ export class ProductListComponent implements OnInit,OnDestroy {
 // }
 
   loadRows() {
+    
     this.service.getAllProducts().subscribe(
       resp => {
         this.products = resp;
+        $("#product_table").DataTable().destroy();
+        this.dtTrigger.next();
       }
     );
+    
   }
 
   ngOnDestroy(): void {
