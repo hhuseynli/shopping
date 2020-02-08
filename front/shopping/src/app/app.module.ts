@@ -19,6 +19,7 @@ import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { DataTablesModule } from 'angular-datatables';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { ImageViewComponent } from './component/image-view/image-view.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 
@@ -49,7 +50,8 @@ import { ImageViewComponent } from './component/image-view/image-view.component'
     DataTablesModule,
     ConfirmationPopoverModule.forRoot({
       confirmButtonType:'success',cancelButtonType:'danger',confirmText:'Confirm',cancelText:'Cancel'
-    })
+    }),
+    InfiniteScrollModule
 
   ],
   providers: [{provide:HTTP_INTERCEPTORS ,useClass:BasicInterceptorService,multi:true}],

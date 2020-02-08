@@ -128,6 +128,44 @@ public class ProductDAO {
 		}
 		
 	}
+	
+	public List<Product> findInRange(Integer begin, Integer length){
+		String query="select * from spring_ng_huseyn_shopping.product_view limit ?,?";
+		List<Product> list = new ArrayList<>();
+		try {
+			Connection con= source.getConnection();
+			PreparedStatement statement = con.prepareStatement(query);
+			statement.setInt(1,begin);
+			statement.setInt(2, length);
+			ResultSet res= statement.executeQuery();
+			while(res.next()){
+				Product p = new Product();
+				p.setId(res.getInt("id"));
+				p.setName(res.getString("name"));
+				p.setDescription(res.getString("description"));
+				p.setPrice(res.getInt("price"));
+				p.setCity(res.getString("city"));
+				p.setImage(res.getString("image"));
+				p.setPhone(res.getString("phone"));
+				p.setEmail(res.getString("email"));
+				p.setSeller(res.getString("seller"));
+				
+				Category c = new Category();
+				c.setId(res.getInt("category_id"));
+				c.setName(res.getString("category_name"));
+				p.setCategory(c);
+				list.add(p);
+			}
+			con.close();
+			statement.close();
+			res.close();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 
 

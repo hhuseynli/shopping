@@ -25,6 +25,7 @@ export class ProductListComponent implements OnInit,OnDestroy {
     popoverMessage:string='Do you want to continue?';
   constructor(private matDialog: MatDialog, private service: ProductService, private uploadService:UploadService) { }
 
+  begin:number=0;
   ngOnInit() {
     this.uploadService.download=this.download;
     this.dtOptions = {
@@ -32,9 +33,8 @@ export class ProductListComponent implements OnInit,OnDestroy {
       pageLength: 10,
       processing: true
     };
-    this.service.getAllProducts().subscribe(data => {
+    this.service.findPartial(this.begin).subscribe(data => {
       this.products = data;
-      this.dtTrigger.next();
     });
     
   }
@@ -69,6 +69,14 @@ export class ProductListComponent implements OnInit,OnDestroy {
   viewImage(image){
     this.uploadService.image=image;
     this.matDialog.open(ImageViewComponent);
+  }
+  onScroll(){
+    this.begin+=10;
+    this.service.findPartial(this.begin).subscribe(data => {
+      this.products.push(...data);
+    });
+    
+    
   }
 
 

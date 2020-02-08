@@ -27,6 +27,10 @@ selectedProduct:Product;
  public deleteById(id:number){
     return this.http.delete(`${API_URL}/products/${id}`);
   }
+  public findPartial(begin:number){
+    return this.http.get<Product[]>(`${API_URL}/products/findRange/${begin}`);
+
+  }
 
   
  

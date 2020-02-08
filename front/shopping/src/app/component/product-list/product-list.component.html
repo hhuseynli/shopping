@@ -68,5 +68,12 @@ placement="top"
     </tr>
   </tbody>
 </table>
+<div
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="1000"
+  (scrolled)="onScroll()"
+  >
+  </div>
 <hr>
 
