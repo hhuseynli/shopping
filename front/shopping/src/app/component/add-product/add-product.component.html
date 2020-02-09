@@ -1,53 +1,61 @@
-
 <form #productForm="ngForm" (ngSubmit)="!productForm.invalid && onSaveProduct()">
-<h5>Add a product</h5>
-<table class="table">
-    <tbody>
-        <tr>
-            <td>Name:</td>
-            <td><input type="text" [(ngModel)]="product.name" name="task" required></td>
-        </tr>
+    <h5>Add a product</h5>
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" [(ngModel)]="product.name" name="task" required></td>
+            </tr>
 
-        <tr>
-            <td>Description:</td>
-            <td><textarea [(ngModel)]="product.description" name="desc" required></textarea></td>
-        </tr>
-        <tr>
-            <td>Category:</td>
-            <td><select [(ngModel)]="product.category.id" name="category" required>
-                <option [value]="c.id" *ngFor = "let c of categories">{{c.name}}</option>
-            </select></td>
-        </tr>
-        <tr>
-            <td>Image:</td>
-            <td><input type="file"  name="img" required (change)="fileSelected($event)"></td>
-        </tr>
-            
-        <tr>
-            <td>Price:</td>
-            <td><input type="number" [(ngModel)]="product.price" name="price" required ></td>
-        </tr>
-        <tr>
-            <td>City:</td>
-            <td><input type="text" [(ngModel)]="product.city" name="city" required ></td>
-        </tr>
-        <tr>
-            <td>Seller:</td>
-            <td><input type="text" [(ngModel)]="product.seller" name="name" required ></td>
-        </tr>
-        <tr>
-            <td>Email:</td>
-            <td><input type="email" [(ngModel)]="product.email" name="email" required ></td>
-        </tr>
-        <tr>
-            <td>Phone Number:</td>
-            <td><input type="text" [(ngModel)]="product.phone" name="number" required maxlength= 20></td>
-        </tr>
-        <tr>
+            <tr>
+                <td>Description:</td>
+                <td><textarea [(ngModel)]="product.description" name="desc" required></textarea></td>
+            </tr>
+            <tr>
+                <td>Category:</td>
+                <td><select [(ngModel)]="product.category.id" name="category" required>
+                        <option [value]="c.id" *ngFor="let c of categories">{{c.name}}</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td>Image:</td>
+                <td><input type="file" name="img" (change)="fileSelected($event)" required ></td>
+            </tr>
 
-            <td><button class="btn btn-success">Save Product</button></td>
-        </tr>
+            <tr>
+                <td>Price:</td>
+                <td><input type="number" [(ngModel)]="product.price" name="price" required></td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td><input type="text" [(ngModel)]="product.city" name="city"  #city="ngModel" [pattern]="letterPattern" required></td>
+            </tr>
+            <tr>
+                <td>Seller:</td>
+                <td><input type="text" [(ngModel)]="product.seller" name="name" #seller="ngModel" [pattern]="letterPattern" required></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="email" [(ngModel)]="product.email" [pattern]="emailPattern" name="email"
+                        #email="ngModel" placeholder="huseynhuseynli1234@gmail.com" required></td>
+            </tr>
+            <tr>
+                <td>Phone Number:</td>
+                <td><input type="text" [(ngModel)]="product.phone" name="number"  placeholder="+994505555555" [pattern]="phonePattern" #pNumber="ngModel" required maxlength=20 ></td>
+            </tr>
+            <tr>
+                <div *ngIf="email.errors?.pattern">
+                    Email is not valid.
+                </div>
+                <div *ngIf="pNumber.errors?.pattern">
+                    Phone number is not valid.
+                </div>
+                <div *ngIf="city.errors?.pattern || seller.errors?.pattern">
+                    City or seller is not valid. You must only use letters.
+                </div>
+                <td><button class="btn btn-success" *ngIf="productForm.valid">Save Product</button></td>
+            </tr>
 
-    </tbody>
-</table>
+        </tbody>
+    </table>
 </form>

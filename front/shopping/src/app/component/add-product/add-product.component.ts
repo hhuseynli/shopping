@@ -15,6 +15,10 @@ import { UploadService } from 'src/app/service/upload.service';
 export class AddProductComponent implements OnInit {
   product: Product = new Product();
   categories:Category[]= [];
+  emailPattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  phonePattern="^((\\+994-?)|0)?[0-9]{9}$";
+  letterPattern="^[a-zA-Z \-\']+";
+
 
   //
   constructor(private service: ProductService, private matDialog:MatDialog, private c_service: CategoryService, private upload:UploadService) { }
@@ -56,6 +60,9 @@ export class AddProductComponent implements OnInit {
     
 
   }
+
+  
+  
 
 
 
