@@ -113,7 +113,7 @@ export class ProductListComponent implements OnInit,OnDestroy {
 
   loadRows() {
     
-    this.service.getAllProducts().subscribe(
+    this.service.findPartial(0).subscribe(
       resp => {
         this.products = resp;
         $("#product_table").DataTable().destroy();
