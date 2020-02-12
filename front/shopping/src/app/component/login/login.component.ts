@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { SignUpComponent } from '../sign-up/sign-up.component';
 import { API_URL } from 'src/app/constants';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
   }
-  constructor(private http: HttpClient, private router:Router, private matDialog:MatDialog) {
+  constructor(private http: HttpClient, private router:Router, private matDialog:MatDialog, private userService:UserService) {
 
   }
 
@@ -49,5 +50,11 @@ export class LoginComponent implements OnInit {
 
     );
   }
+
+  
+
+isUserLoggedIn():boolean{
+  return this.userService.checkLoggedIn();
+}
 
 }
