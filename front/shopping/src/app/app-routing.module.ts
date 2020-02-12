@@ -4,12 +4,14 @@ import { LoginComponent } from './component/login/login.component';
 import { ProductListComponent } from './component/product-list/product-list.component';
 import { LogOutComponent } from './component/log-out/log-out.component';
 import { RouteGuardService } from './service/route-guard.service';
+import { ProductsComponent } from './component/products/products.component';
 
 
 const routes: Routes = [
   {path:"",component:LoginComponent},
+  {path:"products",component:ProductsComponent},
   {path:"login",component:LoginComponent},
-  {path:"products",component:ProductListComponent,canActivate:[RouteGuardService]},
+  {path:"admin",component:ProductListComponent,canActivate:[RouteGuardService]},
   {path:"logout",component:LogOutComponent,canActivate:[RouteGuardService]},
   {path:"**",component:LoginComponent}];
 

@@ -20,6 +20,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { ImageViewComponent } from './component/image-view/image-view.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ProductsComponent } from './component/products/products.component';
 
 
 
@@ -34,7 +35,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     MenuComponent,
     LogOutComponent,
     SignUpComponent,
-    ImageViewComponent
+    ImageViewComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
