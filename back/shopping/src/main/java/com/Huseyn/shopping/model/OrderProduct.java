@@ -1,26 +1,26 @@
 package com.Huseyn.shopping.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
-@Entity
-@Table(name="category")
-@Getter
+@Getter 
 @Setter
-@ToString
-public class Category {
+@Entity
+@Table(name="order_product")
+public class OrderProduct {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
-	private String name;
-	
-	
-	
+	 private Integer id;
+	 @OneToOne(cascade={CascadeType.PERSIST})
+	 private Product product;
+	 private Integer quantity;
+
 }
