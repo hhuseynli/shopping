@@ -29,6 +29,8 @@ export class ProductsComponent implements OnInit {
   
   onScroll(){
     this.begin+=10;
+    // let username=window.atob(sessionStorage.getItem("authorization")).split(":")[0];
+    // console.log(username);
     this.service.findPartial(this.begin).subscribe(
       resp=>{
         this.products.push(...resp);

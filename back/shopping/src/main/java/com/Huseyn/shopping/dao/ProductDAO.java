@@ -21,43 +21,82 @@ public class ProductDAO {
 	@Autowired
 	private DataSource source;
 
-	public  List<Product> getAll() {
-	List<Product>list=new ArrayList<>();
-	try {
-		String query="SELECT * FROM spring_ng_huseyn_shopping.product_view;";
-		Connection con = source.getConnection();
-		PreparedStatement statement = con.prepareStatement(query);
-		ResultSet res= statement.executeQuery();
-		while(res.next()){
-			Product p = new Product();
-			p.setId(res.getInt("id"));
-			p.setName(res.getString("name"));
-			p.setDescription(res.getString("description"));
-			p.setPrice(res.getInt("price"));
-			p.setCity(res.getString("city"));
-			p.setImage(res.getString("image"));
-			p.setPhone(res.getString("phone"));
-			p.setEmail(res.getString("email"));
-			p.setSeller(res.getString("seller"));
-			
-			Category c = new Category();
-			c.setId(res.getInt("category_id"));
-			c.setName(res.getString("category_name"));
-			p.setCategory(c);
-			list.add(p);
-		}
-		con.close();
-		statement.close();
-		res.close();
-		
-	} catch (Exception e) {
-		// TODO: handle exception
-	}
-	return list;
+//	public  List<Product> getAll() {
+//	List<Product>list=new ArrayList<>();
+//	try {
+//		String query="SELECT * FROM spring_ng_huseyn_shopping.product_view where username=";
+//		Connection con = source.getConnection();
+//		PreparedStatement statement = con.prepareStatement(query);
+//		ResultSet res= statement.executeQuery();
+//		while(res.next()){
+//			Product p = new Product();
+//			p.setId(res.getInt("id"));
+//			p.setName(res.getString("name"));
+//			p.setDescription(res.getString("description"));
+//			p.setPrice(res.getInt("price"));
+//			p.setCity(res.getString("city"));
+//			p.setImage(res.getString("image"));
+//			p.setPhone(res.getString("phone"));
+//			p.setEmail(res.getString("email"));
+//			p.setSeller(res.getString("seller"));
+//			p.setUsername(res.getString("username"));
+//			
+//			Category c = new Category();
+//			c.setId(res.getInt("category_id"));
+//			c.setName(res.getString("category_name"));
+//			p.setCategory(c);
+//			list.add(p);
+//		}
+//		con.close();
+//		statement.close();
+//		res.close();
+//		
+//	} catch (Exception e) {
+//		// TODO: handle exception
+//	}
+//	return list;
+//	
+//	}
 	
-	}
+//	public  List<Product> getByUsername(String username) {
+//		List<Product>list=new ArrayList<>();
+//		try {
+//			String query="SELECT * FROM spring_ng_huseyn_shopping.product_view where username='" +username+"'";
+//			Connection con = source.getConnection();
+//			PreparedStatement statement = con.prepareStatement(query);
+//			ResultSet res= statement.executeQuery();
+//			while(res.next()){
+//				Product p = new Product();
+//				p.setId(res.getInt("id"));
+//				p.setName(res.getString("name"));
+//				p.setDescription(res.getString("description"));
+//				p.setPrice(res.getInt("price"));
+//				p.setCity(res.getString("city"));
+//				p.setImage(res.getString("image"));
+//				p.setPhone(res.getString("phone"));
+//				p.setEmail(res.getString("email"));
+//				p.setSeller(res.getString("seller"));
+//				
+//				Category c = new Category();
+//				c.setId(res.getInt("category_id"));
+//				c.setName(res.getString("category_name"));
+//				p.setCategory(c);
+//				list.add(p);
+//			}
+//			con.close();
+//			statement.close();
+//			res.close();
+//			
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//		return list;
+//		
+//		}
+//	
+	
 
-	public Integer save(Product product) {
+	public Integer save(Product product,String username) {
 		Integer id=0;
 		try {
 			Connection con= source.getConnection();
@@ -78,7 +117,7 @@ public class ProductDAO {
 				statement.executeUpdate();
 ;		
 			}else{
-				String query="INSERT into spring_ng_huseyn_shopping.product(name,description,image,price,city,seller,phone,email,category_id) values(?,?,?,?,?,?,?,?,?);";			
+				String query="INSERT into spring_ng_huseyn_shopping.product(name,description,image,price,city,seller,phone,email,category_id,username) values(?,?,?,?,?,?,?,?,?,?);";			
 				
 				statement = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 				statement.setString(1, product.getName());
@@ -90,6 +129,7 @@ public class ProductDAO {
 				statement.setString(7, product.getPhone());
 				statement.setString(8, product.getEmail());
 				statement.setInt(9, product.getCategory().getId());
+				statement.setString(10, product.getUsername());
 				statement.executeUpdate();
 				res = statement.getGeneratedKeys();
 				while(res.next()){
@@ -131,6 +171,44 @@ public class ProductDAO {
 	
 	public List<Product> findInRange(Integer begin, Integer length){
 		String query="select * from spring_ng_huseyn_shopping.product_view limit ?,?";
+		List<Product> list = new ArrayList<>();
+		try {
+			Connection con= source.getConnection();
+			PreparedStatement statement = con.prepareStatement(query);
+			statement.setInt(1,begin);
+			statement.setInt(2, length);
+			ResultSet res= statement.executeQuery();
+			while(res.next()){
+				Product p = new Product();
+				p.setId(res.getInt("id"));
+				p.setName(res.getString("name"));
+				p.setDescription(res.getString("description"));
+				p.setPrice(res.getInt("price"));
+				p.setCity(res.getString("city"));
+				p.setImage(res.getString("image"));
+				p.setPhone(res.getString("phone"));
+				p.setEmail(res.getString("email"));
+				p.setSeller(res.getString("seller"));
+				
+				Category c = new Category();
+				c.setId(res.getInt("category_id"));
+				c.setName(res.getString("category_name"));
+				p.setCategory(c);
+				list.add(p);
+			}
+			con.close();
+			statement.close();
+			res.close();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public List<Product> findInRangeByUsername(Integer begin, Integer length, String username){
+		String query="select * from spring_ng_huseyn_shopping.product_view limit ?,? where username= '"+username+"'";
 		List<Product> list = new ArrayList<>();
 		try {
 			Connection con= source.getConnection();

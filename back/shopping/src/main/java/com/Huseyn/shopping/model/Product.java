@@ -34,7 +34,7 @@ public class Product {
 		private String seller;
 		private String phone;
 		private String email;
-		private Integer userId;
+		private String username;
 		
 		
 		} 

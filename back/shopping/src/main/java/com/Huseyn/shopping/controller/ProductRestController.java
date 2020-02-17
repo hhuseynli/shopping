@@ -24,15 +24,20 @@ public class ProductRestController{
 	@Autowired
 	ProductDAO productDAO;
 
-	@RequestMapping(path="/product",method=RequestMethod.GET)
-	public List<Product> getProducts(){
-		return productDAO.getAll();
-		
-	}
+//	@RequestMapping(path="/product",method=RequestMethod.GET)
+//	public List<Product> getProducts(){
+//		return productDAO.getAll();
+//		
+//	}
+//	@RequestMapping(path="/product/{username}",method=RequestMethod.GET)
+//	public List<Product> getProductsByUsername(@PathVariable String username){
+//		return productDAO.getByUsername(username);
+//		
+//	}
 
-@RequestMapping(path="/product", method=RequestMethod.POST)
-public Product addProduct(@RequestBody Product product) {
-	Integer newId=productDAO.save(product);
+@RequestMapping(path="/product/{username}", method=RequestMethod.POST)
+public Product addProduct(@RequestBody Product product, @PathVariable String username) {
+	Integer newId=productDAO.save(product,username);
 	product.setId(newId);
 	return product;
  
@@ -40,16 +45,17 @@ public Product addProduct(@RequestBody Product product) {
 
 @DeleteMapping(path="/{id}")
 public void deleteTodoById(@PathVariable(name="id") Integer id){
-	for (int i = 0; i < productDAO.getAll().size(); i++) {
-		if(productDAO.getAll().get(i).getId()==id){
 			productDAO.deleteSel(id);
-		}
-	}
+
 	
 }
 @GetMapping(path="/findRange/{begin}")
 public List<Product> findInRange(@PathVariable(name="begin") Integer begin){
 	return productDAO.findInRange(begin, 10);
+}
+@GetMapping(path="/findRange/{begin}/{username}")
+public List<Product> findInRangeByUsername(@PathVariable(name="begin") Integer begin, @PathVariable String username){
+	return productDAO.findInRangeByUsername(begin, 10, username);
 }
 
 
