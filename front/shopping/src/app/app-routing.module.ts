@@ -8,7 +8,7 @@ import { ProductsComponent } from './component/products/products.component';
 
 
 const routes: Routes = [
-  {path:"",component:LoginComponent},
+  {path:"",component:ProductsComponent },
   {path:"products",component:ProductsComponent},
   {path:"login",component:LoginComponent},
   {path:"admin",component:ProductListComponent,canActivate:[RouteGuardService]},
