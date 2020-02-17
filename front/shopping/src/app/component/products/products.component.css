@@ -8,3 +8,9 @@ button{
     max-width: 130px;
     align-self: center;
 }
+img{
+    min-width:500;
+    min-height:80px;
+    max-height: 300px;
+
+}
