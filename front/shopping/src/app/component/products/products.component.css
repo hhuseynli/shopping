@@ -1,6 +1,10 @@
 #card{
     margin: 10px 0 ;
+    border-radius: 3px 3px 0 0;
+    text-align: center;
 }
 button{
     margin: 5px;
+    max-width: 130px;
+    align-self: center;
 }

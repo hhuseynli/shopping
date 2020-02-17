@@ -27,7 +27,6 @@ export class ProductListComponent implements OnInit,OnDestroy {
 
   begin:number=0;
   ngOnInit() {
-    this.uploadService.download=this.download;
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,

@@ -1,26 +1,15 @@
 <div class="row">
-    <div class="col-sm-4" *ngFor="let p of products" id="card">
+    <div class="col-sm-3" *ngFor="let p of products" id="card">
 <div class="card" style="width: 18rem;" >
-    <img class="card-img-top " [src]="download+p.image" alt="image">
-    <div class="card-body">
+    <img class="card-img-top " [src]="download+p.image" alt="image" (click)="viewImage(p.image)">
+    <div class="card-body" (click)="onProductSelected(p)">
         
       <h5 class="card-title">{{p.name}}</h5>
       <p class="card-text">{{p.description}}</p>
-      
-      
-      <a href="#" class="btn btn-primary">Add To Cart</a>
-      <button data-toggle="collapse" data-target="#demo">Details</button>
-
-<div id="demo" class="collapse">
-    <p class="card-text"><small class="text-muted">City: {{p.city}}</small></p>
-    <p class="card-text"><small class="text-muted">Seller: {{p.seller}}</small></p>
-    <p class="card-text"><small class="text-muted">Price: {{p.price}} $</small></p>
-    <p class="card-text"><small class="text-muted">Category: {{p.category.name}}</small></p>
-    <p class="card-text"><small class="text-muted">Phone number: {{p.phone}}</small></p>
-    <p class="card-text"><small class="text-muted">Email: {{p.email}}</small></p>
-   
-</div>
+      <p class="card-text">Price: {{p.price}} $</p>
+    
     </div>
+    <button class="btn btn-primary">Add To Cart</button>
   </div>
 </div>
 </div>

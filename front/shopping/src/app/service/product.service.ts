@@ -9,6 +9,7 @@ import { API_URL } from '../constants';
 export class ProductService {
 
 selectedProduct:Product;
+product:Product;
 
   constructor( private http:HttpClient) { }
 

@@ -21,6 +21,7 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { ImageViewComponent } from './component/image-view/image-view.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ProductsComponent } from './component/products/products.component';
+import { ProductViewComponent } from './component/product-view/product-view.component';
 
 
 
@@ -36,7 +37,8 @@ import { ProductsComponent } from './component/products/products.component';
     LogOutComponent,
     SignUpComponent,
     ImageViewComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductViewComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +60,6 @@ import { ProductsComponent } from './component/products/products.component';
   ],
   providers: [{provide:HTTP_INTERCEPTORS ,useClass:BasicInterceptorService,multi:true}],
   bootstrap: [AppComponent],
-  entryComponents:[AddProductComponent,AddCategoryComponent,SignUpComponent,ImageViewComponent]
+  entryComponents:[AddProductComponent,AddCategoryComponent,SignUpComponent,ImageViewComponent, ProductViewComponent]
 })
 export class AppModule { }

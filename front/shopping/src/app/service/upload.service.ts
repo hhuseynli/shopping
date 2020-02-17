@@ -9,7 +9,7 @@ import { API_URL } from '../constants';
 export class UploadService {
 
   constructor(private http:HttpClient) { }
-  download:string="";
+
   image:string="";
 
       uploadImage(formData:FormData){

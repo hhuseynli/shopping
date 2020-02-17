@@ -23,6 +23,8 @@ public class Customer {
 	private String name;
 	private String address;
 	private String phone;
+	private String email;
+	private String city;
 	  
 	@OneToMany
 	@JoinColumn(name="customer_id")
