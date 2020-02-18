@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Huseyn.shopping.dao.ProductDAO;
+import com.Huseyn.shopping.dao.ProductsDAO;
 import com.Huseyn.shopping.model.Product;
 
 @RestController
@@ -22,7 +23,7 @@ public class ProductRestController{
 	
 
 	@Autowired
-	ProductDAO productDAO;
+	ProductsDAO productDAO;
 
 //	@RequestMapping(path="/product",method=RequestMethod.GET)
 //	public List<Product> getProducts(){
@@ -35,27 +36,27 @@ public class ProductRestController{
 //		
 //	}
 
-@RequestMapping(path="/product/{username}", method=RequestMethod.POST)
-public Product addProduct(@RequestBody Product product, @PathVariable String username) {
-	Integer newId=productDAO.save(product,username);
-	product.setId(newId);
-	return product;
- 
-}
-
-@DeleteMapping(path="/{id}")
-public void deleteTodoById(@PathVariable(name="id") Integer id){
-			productDAO.deleteSel(id);
-
-	
-}
+//@RequestMapping(path="/product/{username}", method=RequestMethod.POST)
+//public Product addProduct(@RequestBody Product product, @PathVariable String username) {
+//	Integer newId=productDAO.save(product,username);
+//	product.setId(newId);
+//	return product;
+// 
+//}
+//
+//@DeleteMapping(path="/{id}")
+//public void deleteTodoById(@PathVariable(name="id") Integer id){
+//			productDAO.deleteSel(id);
+//
+//	
+//}
 @GetMapping(path="/findRange/{begin}")
 public List<Product> findInRange(@PathVariable(name="begin") Integer begin){
-	return productDAO.findInRange(begin, 10);
+	return productDAO.findRange(begin, 10);
 }
 @GetMapping(path="/findRange/{begin}/{username}")
 public List<Product> findInRangeByUsername(@PathVariable(name="begin") Integer begin, @PathVariable String username){
-	return productDAO.findInRangeByUsername(begin, 10, username);
+	return productDAO.findRangeByUsername(username, begin, 10 );
 }
 
 

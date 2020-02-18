@@ -10,7 +10,6 @@ export class ProductService {
 
 selectedProduct:Product;
 product:Product;
-
   constructor( private http:HttpClient) { }
 
   public addProductToBackend(product:Product ){
@@ -31,6 +30,10 @@ product:Product;
   public findPartial(begin:number){
     return this.http.get<Product[]>(`${API_URL}/products/findRange/${begin}`);
 
+  }
+
+  public findPartialByUsername(begin:number,username:string){
+    return this.http.get<Product[]>(`${API_URL}/products/findRange/${begin}/${username}`);
   }
 
   
