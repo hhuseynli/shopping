@@ -41,11 +41,11 @@ public void deleteTodoById(@PathVariable(name="id") Integer id){
 }
 @GetMapping(path="/findRange/{begin}")
 public List<Product> findInRange(@PathVariable(name="begin") Integer begin){
-	return productDAO.findRange(begin, 10);
+	return productDAO.findRange(begin, 12);
 }
 @GetMapping(path="/findRange/{begin}/{username}")
 public List<Product> findInRangeByUsername(@PathVariable(name="begin") Integer begin, @PathVariable String username){
-	return productDAO.findRangeByUsername(username, begin, 10 );
+	return productDAO.findRangeByUsername(username, begin, 12 );
 }
 
 
