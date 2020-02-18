@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Huseyn.shopping.dao.ProductDAO;
 import com.Huseyn.shopping.dao.ProductsDAO;
 import com.Huseyn.shopping.model.Product;
 
@@ -25,31 +24,21 @@ public class ProductRestController{
 	@Autowired
 	ProductsDAO productDAO;
 
-//	@RequestMapping(path="/product",method=RequestMethod.GET)
-//	public List<Product> getProducts(){
-//		return productDAO.getAll();
-//		
-//	}
-//	@RequestMapping(path="/product/{username}",method=RequestMethod.GET)
-//	public List<Product> getProductsByUsername(@PathVariable String username){
-//		return productDAO.getByUsername(username);
-//		
-//	}
 
-//@RequestMapping(path="/product/{username}", method=RequestMethod.POST)
-//public Product addProduct(@RequestBody Product product, @PathVariable String username) {
-//	Integer newId=productDAO.save(product,username);
-//	product.setId(newId);
-//	return product;
-// 
-//}
-//
-//@DeleteMapping(path="/{id}")
-//public void deleteTodoById(@PathVariable(name="id") Integer id){
-//			productDAO.deleteSel(id);
-//
-//	
-//}
+
+@RequestMapping(path="/product", method=RequestMethod.POST)
+public Product addProduct(@RequestBody Product product) {
+	
+	return productDAO.save(product);
+ 
+}
+
+@DeleteMapping(path="/{id}")
+public void deleteTodoById(@PathVariable(name="id") Integer id){
+			productDAO.deleteById(id);
+
+	
+}
 @GetMapping(path="/findRange/{begin}")
 public List<Product> findInRange(@PathVariable(name="begin") Integer begin){
 	return productDAO.findRange(begin, 10);
