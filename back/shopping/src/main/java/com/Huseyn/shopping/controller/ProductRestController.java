@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Huseyn.shopping.dao.ProductsDAO;
 import com.Huseyn.shopping.model.Product;
+import com.Huseyn.shopping.model.SearchModel;
+import com.mysql.cj.util.StringUtils.SearchMode;
 
 @RestController
 @RequestMapping(path="/products" )
@@ -46,6 +49,11 @@ public List<Product> findInRange(@PathVariable(name="begin") Integer begin){
 @GetMapping(path="/findRange/{begin}/{username}")
 public List<Product> findInRangeByUsername(@PathVariable(name="begin") Integer begin, @PathVariable String username){
 	return productDAO.findRangeByUsername(username, begin, 12 );
+}
+
+@PostMapping(path="/searchRange")
+public List<Product> searchInRange(@RequestBody SearchModel search){
+	return productDAO.findSearchInRange(search.getSearch(), search.getBegin(), search.getLength());
 }
 
 
