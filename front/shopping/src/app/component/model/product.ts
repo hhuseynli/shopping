@@ -11,6 +11,7 @@ export class Product{
  public seller:string;
  public phone:number;
  public email:string;
+ public username:string;
 
  constructor(){
      this.category= new Category();
@@ -31,6 +32,28 @@ export class User{
 export class ImageBean{
 public id:number;
 public image:string;
+}
+export class Customer{
+public id:number;
+public name:string;
+public address:string;
+public phone:string;
+public email:string;
+public city:string;
+}
+
+export class OrderModel{
+    public id:number ;
+	public note:string ;
+	public price:number;
+	public username:string;
+	public customer:Customer;
+	public orderProducts:OrderProduct[];
+}
+export class OrderProduct{
+    public id:number;
+    public product:Product;
+    public quantity:number;
 }
 
 
