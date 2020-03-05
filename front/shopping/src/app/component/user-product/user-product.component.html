@@ -6,11 +6,22 @@
         
       <h5 class="card-title">{{p.name}}</h5>
       <p class="card-text">{{p.description}}</p>
-      <p class="card-text">Price: {{p.price}} $</p>
+      <p class="card-text">Price: {{p.price | currency:'USD'}}</p>
       
     
     </div>
-    <button class="btn btn-primary">Add To Cart</button>
+    <button 
+      class="btn btn-danger"
+      mwlConfirmationPopover
+      [popoverTitle]="popoverTitle" 
+      [popoverMessage]="popoverMessage" 
+      placement="top" 
+      (confirm)="onDeleteProduct(true,p)" 
+      (cancel)="onDeleteProduct(false,p)"  
+      >Delete Product
+      </button>
+      <button class="btn btn-primary" (click)="onUpdateProduct()">Update</button>
+    
   </div>
 </div>
 </div>

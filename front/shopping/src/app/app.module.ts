@@ -22,6 +22,8 @@ import { ImageViewComponent } from './component/image-view/image-view.component'
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ProductsComponent } from './component/products/products.component';
 import { ProductViewComponent } from './component/product-view/product-view.component';
+import { UserProductComponent } from './component/user-product/user-product.component';
+
 
 
 
@@ -38,7 +40,8 @@ import { ProductViewComponent } from './component/product-view/product-view.comp
     SignUpComponent,
     ImageViewComponent,
     ProductsComponent,
-    ProductViewComponent
+    ProductViewComponent,
+    UserProductComponent
   ],
   imports: [
     BrowserModule,

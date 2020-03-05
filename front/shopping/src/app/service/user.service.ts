@@ -7,6 +7,7 @@ import { API_URL } from '../constants';
   providedIn: 'root'
 })
 export class UserService {
+  username:string="";
   checkLoggedIn(): boolean {
     let result:boolean= false;
     if(sessionStorage.getItem("authorization")){

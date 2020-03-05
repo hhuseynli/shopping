@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material';
 import { CategoryService } from 'src/app/service/category.service';
 import { HttpClient } from '@angular/common/http';
 import { UploadService } from 'src/app/service/upload.service';
+import { UserService } from 'src/app/service/user.service';
 
 
 @Component({
@@ -21,9 +22,10 @@ export class AddProductComponent implements OnInit {
 
 
   //
-  constructor(private service: ProductService, private matDialog:MatDialog, private c_service: CategoryService, private upload:UploadService) { }
+  constructor(private service: ProductService, private matDialog:MatDialog, private c_service: CategoryService, private upload:UploadService, private userService:UserService) { }
 
   ngOnInit() {
+    this.product.username=this.userService.username;
     this.c_service.getAllCategories().subscribe(
       resp=>{
         this.categories = resp;
