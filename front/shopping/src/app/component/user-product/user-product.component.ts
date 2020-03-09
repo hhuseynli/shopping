@@ -42,8 +42,9 @@ export class UserProductComponent implements OnInit {
       }
     
     onUpdateProduct(product){
+      this.service.selectedProduct=product;
          this.matDialog.open(AddProductComponent);
-         this.service.selectedProduct=product;
+         
     
     }
     onProductSelected(product:Product){

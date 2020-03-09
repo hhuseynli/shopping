@@ -44,6 +44,7 @@ export class AddProductComponent implements OnInit {
     
   }
   onSaveProduct() {
+    this.product.username=sessionStorage.getItem("username");
     this.service.addProductToBackend(this.product);
     this.service.selectedProduct = null;
     this.matDialog.closeAll();

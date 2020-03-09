@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       headers: HeaderObject
     }).subscribe(
       success => {
-        this.userService.username=this.username;
+        sessionStorage.setItem("username",this.username);
         sessionStorage.setItem("authorization", HeaderString);
         this.router.navigate(['products']);
 
