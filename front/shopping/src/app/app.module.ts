@@ -23,6 +23,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ProductsComponent } from './component/products/products.component';
 import { ProductViewComponent } from './component/product-view/product-view.component';
 import { UserProductComponent } from './component/user-product/user-product.component';
+import { BasketComponent } from './component/basket/basket.component';
 
 
 
@@ -41,7 +42,8 @@ import { UserProductComponent } from './component/user-product/user-product.comp
     ImageViewComponent,
     ProductsComponent,
     ProductViewComponent,
-    UserProductComponent
+    UserProductComponent,
+    BasketComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +65,6 @@ import { UserProductComponent } from './component/user-product/user-product.comp
   ],
   providers: [{provide:HTTP_INTERCEPTORS ,useClass:BasicInterceptorService,multi:true}],
   bootstrap: [AppComponent],
-  entryComponents:[AddProductComponent,AddCategoryComponent,SignUpComponent,ImageViewComponent, ProductViewComponent]
+  entryComponents:[AddProductComponent,AddCategoryComponent,SignUpComponent,ImageViewComponent, ProductViewComponent, BasketComponent]
 })
 export class AppModule { }

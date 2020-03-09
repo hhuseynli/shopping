@@ -1,0 +1,25 @@
+<table class="table">
+    <tbody *ngFor="let p of products">
+        <tr>
+            <td>
+            <img [src]="download+p.image" alt="image not found">
+            </td>
+            <td>
+                {{p.product.name}}
+            </td>
+            <td>
+                {{p.product.price | currency:"USD"}}
+            </td>
+            <td>
+                <input type="number" [value]="p.quantity">
+            </td>
+            <td>
+                {{(p.product.price*p.quantity) | currency:"USD"}}
+            </td>
+
+            <td (click)="onDelete(p)">
+                X
+            </td>
+        </tr>
+    </tbody>
+</table>

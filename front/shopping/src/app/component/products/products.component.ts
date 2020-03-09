@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../model/product';
+import { Product, OrderProduct } from '../model/product';
 import { ProductService } from 'src/app/service/product.service';
 import { API_URL } from 'src/app/constants';
 import { MatDialog } from '@angular/material';
 import { ProductViewComponent } from '../product-view/product-view.component';
 import { UploadService } from 'src/app/service/upload.service';
 import { ImageViewComponent } from '../image-view/image-view.component';
+import { BasketService } from 'src/app/service/basket.service';
 
 @Component({
   selector: 'app-products',
@@ -16,7 +17,7 @@ export class ProductsComponent implements OnInit {
   products:Product[]=[];
   begin:number=0;
   download:string=`${API_URL}/filedownload/files/`;
-  constructor(private service:ProductService, private matDialog:MatDialog, private upload:UploadService) { }
+  constructor(private service:ProductService, private matDialog:MatDialog, private upload:UploadService, private basket:BasketService) { }
 
   ngOnInit() {
     this.service.findPartial(this.begin).subscribe(
@@ -24,6 +25,8 @@ export class ProductsComponent implements OnInit {
         this.products=resp;
       }
     );
+    
+   
   
   }
   
@@ -47,6 +50,17 @@ export class ProductsComponent implements OnInit {
   viewImage(image){
     this.upload.image=image;
     this.matDialog.open(ImageViewComponent);
+  }
+
+  onCart(product:Product){
+    let orderP:OrderProduct = new OrderProduct();
+    orderP.product=product;
+    orderP.quantity=1;
+    this.basket.orderProducts.push(orderP);
+    this.basket.productCountChanged.emit(this.basket.orderProducts.length );
+    
+
+
   }
 
 }
