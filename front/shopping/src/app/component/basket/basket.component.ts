@@ -14,6 +14,9 @@ export class BasketComponent implements OnInit {
   constructor(public service: BasketService) { }
 
   ngOnInit() {
+    this.service.orderProducts.forEach(element => {
+      console.log(element);
+    });
     this.products = this.service.orderProducts;
   }
   onDelete(product: Product) {

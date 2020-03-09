@@ -2,7 +2,7 @@
     <tbody *ngFor="let p of products">
         <tr>
             <td>
-            <img [src]="download+p.image" alt="image not found">
+            <img [src]="download+p.image" >
             </td>
             <td>
                 {{p.product.name}}
@@ -11,7 +11,7 @@
                 {{p.product.price | currency:"USD"}}
             </td>
             <td>
-                <input type="number" [value]="p.quantity">
+                <input type="number" [(ngModel)]="p.quantity">
             </td>
             <td>
                 {{(p.product.price*p.quantity) | currency:"USD"}}
