@@ -1,0 +1,31 @@
+<form #confirmForm="ngForm" (ngSubmit)="!confirmForm.invalid && onConfirm()">
+    <table class="table">
+        <tr>
+            <td>Name :</td>
+            <td><input type="text" [(ngModel)]="order.customer.name" name="customerName" required></td>
+        </tr>
+        <tr>
+            <td>Phone Number :</td>
+            <td><input type="text" [(ngModel)]="order.customer.phone" name="customerPhone" required></td>
+        </tr>
+        <tr>
+            <td>Address :</td>
+            <td><input type="text" [(ngModel)]="order.customer.address" name="customerAddress" required></td>
+        </tr>
+        <tr>
+            <td>Email :</td>
+            <td><input type="text" [(ngModel)]="order.customer.email" name="customerEmail" required></td>
+        </tr>
+        <tr>
+            <td>City :</td>
+            <td><input type="text" [(ngModel)]="order.customer.city" name="customerCity" required></td>
+        </tr>
+        <tr>
+            <td>Note :</td>
+            <td><input type="text" [(ngModel)]="order.note" name="orderNote" ></td>
+        </tr>
+
+        <td *ngIf="confirmForm.valid"><button class="btn btn-success" type="submit">Confirm</button></td>
+    </table>
+
+</form>
