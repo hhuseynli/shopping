@@ -1,6 +1,7 @@
 <div *ngIf="price==0">
     <h3>No Items in the Cart!</h3>
 </div>
+<div id="table">
 <table class="table">
     <tbody *ngFor="let p of products;let counter=index;">
         <tr>
@@ -30,3 +31,4 @@
 <span *ngIf="price!=0" >
     Total price: {{ price | currency:'USD'}}
 </span>
+</div>
