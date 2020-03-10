@@ -32,10 +32,7 @@ height: 500px;"
       <th>Image</th>
       <th>Price</th>
       <th>Category</th>
-      <th>City</th>
-      <th>Seller</th>
-      <th>Phone</th>
-      <th>Email</th>
+      <th>User</th>
       <th>Operations</th>
 
     </tr>
@@ -48,10 +45,7 @@ height: 500px;"
       <td><img [src]="download+p.image" [alt]="p.image" (click)="viewImage(p.image)"></td>
       <td>{{ p.price }}</td>
       <td>{{ p.category.name }}</td>
-      <td>{{ p.city }}</td>
-      <td>{{ p.seller }}</td>
-      <td>{{ p.phone }}</td>
-      <td>{{ p.email }}</td>
+      <td>{{ p.username }}</td>
       <td>
          <button 
 class="btn btn-danger"
