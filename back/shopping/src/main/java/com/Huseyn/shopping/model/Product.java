@@ -30,10 +30,6 @@ public class Product {
 		@ManyToOne
 		@JoinColumn(name="category_id")
 		private Category category;
-		private String city;
-		private String seller;
-		private String phone;
-		private String email;
 		private String username;
 		
 		

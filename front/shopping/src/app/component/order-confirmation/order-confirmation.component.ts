@@ -10,6 +10,9 @@ import { OrderService } from 'src/app/service/order.service';
 })
 export class OrderConfirmationComponent implements OnInit {
   order:OrderModel= new OrderModel();
+  emailPattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  phonePattern="^((\\+994-?)|0)?[0-9]{9}$";
+  letterPattern="^[a-zA-Z \-\']+";
   constructor(private bS:BasketService, private orderService:OrderService) { }
 
   ngOnInit() {

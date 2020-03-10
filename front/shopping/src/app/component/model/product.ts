@@ -7,10 +7,6 @@ export class Product{
  public image:string;
  public price:number;
  public category:Category;
- public city:string;
- public seller:string;
- public phone:number;
- public email:string;
  public username:string;
 
  constructor(){

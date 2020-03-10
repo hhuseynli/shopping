@@ -27,32 +27,7 @@
                 <td><input type="number" [(ngModel)]="product.price" name="price" required></td>
             </tr>
             <tr>
-                <td>City:</td>
-                <td><input type="text" [(ngModel)]="product.city" name="city"  #city="ngModel" [pattern]="letterPattern" required></td>
-            </tr>
-            <tr>
-                <td>Seller:</td>
-                <td><input type="text" [(ngModel)]="product.seller" name="name" #seller="ngModel" [pattern]="letterPattern" required></td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td><input type="email" [(ngModel)]="product.email" [pattern]="emailPattern" name="email"
-                        #email="ngModel" placeholder="huseynhuseynli1234@gmail.com" required></td>
-            </tr>
-            <tr>
-                <td>Phone Number:</td>
-                <td><input type="text" [(ngModel)]="product.phone" name="number"  placeholder="+994505555555" [pattern]="phonePattern" #pNumber="ngModel" required maxlength=20 ></td>
-            </tr>
-            <tr>
-                <div *ngIf="email.errors?.pattern">
-                    Email is not valid.
-                </div>
-                <div *ngIf="pNumber.errors?.pattern">
-                    Phone number is not valid.
-                </div>
-                <div *ngIf="city.errors?.pattern || seller.errors?.pattern">
-                    City or seller is not valid. You must only use letters.
-                </div>
+            
                 <td><button class="btn btn-success" *ngIf="productForm.valid">Save Product</button></td>
             </tr>
 
