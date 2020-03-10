@@ -1,6 +1,6 @@
 <div class="row" id="row">
-    <div class="col-sm-3" *ngFor="let p of products" id="card">
-<div class="card"  >
+    <div class="col-sm-3" *ngFor="let p of products" >
+<div class="card"  id="card">
     <img class="card-img-top " [src]="download+p.image" alt="image" (click)="viewImage(p.image)">
     <div class="card-body" (click)="onProductSelected(p)" id="body">
         
