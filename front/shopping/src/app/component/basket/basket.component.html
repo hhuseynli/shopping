@@ -1,9 +1,10 @@
+<div *ngIf="price==0">
+    <h3>No Items in the Cart!</h3>
+</div>
 <table class="table">
-    <tbody *ngFor="let p of products">
+    <tbody *ngFor="let p of products;let counter=index;">
         <tr>
-            <td>
-            <img [src]="download+p.image" >
-            </td>
+            <td><img [src]="download+p.product.image" (click)="viewImage(p.product.image)"></td>
             <td>
                 {{p.product.name}}
             </td>
@@ -11,15 +12,21 @@
                 {{p.product.price | currency:"USD"}}
             </td>
             <td>
-                <input type="number" [(ngModel)]="p.quantity">
+                <input type="number" [(ngModel)]="p.quantity" (input)="onProductQuantityChanged(p,counter)" min="0" max="10">
             </td>
             <td>
                 {{(p.product.price*p.quantity) | currency:"USD"}}
             </td>
 
-            <td (click)="onDelete(p)">
-                X
+            <td>
+                <button class="btn btn-danger"  (click)="onDelete(p)">X</button>
             </td>
         </tr>
     </tbody>
 </table>
+
+
+<button mat-dialog-close *ngIf="price!=0" (click)="onConfirmOrder()" class="btn btn-success ">Confirm Order </button>
+<span *ngIf="price!=0" >
+    Total price: {{ price | currency:'USD'}}
+</span>
