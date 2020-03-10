@@ -17,6 +17,7 @@ export class ProductsComponent implements OnInit {
   products:Product[]=[];
   begin:number=0;
   download:string=`${API_URL}/filedownload/files/`;
+  
   constructor(private service:ProductService, private matDialog:MatDialog, private upload:UploadService, private basket:BasketService) { }
 
   ngOnInit() {
@@ -32,8 +33,6 @@ export class ProductsComponent implements OnInit {
   
   onScroll(){
     this.begin+=10;
-    // let username=window.atob(sessionStorage.getItem("authorization")).split(":")[0];
-    // console.log(username);
     this.service.findPartial(this.begin).subscribe(
       resp=>{
         this.products.push(...resp);
@@ -57,7 +56,7 @@ export class ProductsComponent implements OnInit {
     orderP.product=product;
     orderP.quantity=1;
     this.basket.orderProducts.push(orderP);
-    this.basket.productCountChanged.emit(this.basket.orderProducts.length );
+    this.basket.changeProductCount();
     
 
 
