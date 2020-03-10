@@ -19,7 +19,7 @@ public class OrderProduct {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	 private Integer id;
-	 @OneToOne(cascade={CascadeType.PERSIST})
+	 @OneToOne
 	 private Product product;
 	 private Integer quantity;
 
