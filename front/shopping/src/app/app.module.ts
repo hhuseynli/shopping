@@ -24,6 +24,7 @@ import { ProductsComponent } from './component/products/products.component';
 import { ProductViewComponent } from './component/product-view/product-view.component';
 import { UserProductComponent } from './component/user-product/user-product.component';
 import { BasketComponent } from './component/basket/basket.component';
+import { OrderConfirmationComponent } from './component/order-confirmation/order-confirmation.component';
 
 
 
@@ -43,7 +44,8 @@ import { BasketComponent } from './component/basket/basket.component';
     ProductsComponent,
     ProductViewComponent,
     UserProductComponent,
-    BasketComponent
+    BasketComponent,
+    OrderConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +67,6 @@ import { BasketComponent } from './component/basket/basket.component';
   ],
   providers: [{provide:HTTP_INTERCEPTORS ,useClass:BasicInterceptorService,multi:true}],
   bootstrap: [AppComponent],
-  entryComponents:[AddProductComponent,AddCategoryComponent,SignUpComponent,ImageViewComponent, ProductViewComponent, BasketComponent]
+  entryComponents:[AddProductComponent,AddCategoryComponent,SignUpComponent,ImageViewComponent, ProductViewComponent, BasketComponent, OrderConfirmationComponent]
 })
 export class AppModule { }
