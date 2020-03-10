@@ -4,6 +4,7 @@
     margin: 10px 0 ;
     border-radius: 3px 3px 0 0;
     text-align: center;
+    height:425px;
 }
 
 
@@ -13,8 +14,9 @@ button{
     align-self: center;
 }
 img{
-    min-width:500;
-    height:200px;
+    min-height: 100px;
+    max-height:250px;
+    background-color:#fafaf8;
 
 }
 #row{
