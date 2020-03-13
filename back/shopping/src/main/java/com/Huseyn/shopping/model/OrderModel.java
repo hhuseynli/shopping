@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,6 +30,7 @@ public class OrderModel {
 	private String username;
 	
 	@ManyToOne(cascade={CascadeType.PERSIST})
+	@JsonIgnoreProperties("orders")
 	private Customer customer;
 	  
 	@OneToMany(cascade=CascadeType.ALL)
