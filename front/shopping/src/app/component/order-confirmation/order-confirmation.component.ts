@@ -13,17 +13,28 @@ export class OrderConfirmationComponent implements OnInit {
   emailPattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   phonePattern="^((\\+994-?)|0)?[0-9]{9}$";
   letterPattern="^[a-zA-Z \-\']+";
+  price:number=0;
   constructor(private bS:BasketService, private orderService:OrderService) { }
 
   ngOnInit() {
+    this.bS.totalPriceChanged.subscribe(
+      resp=>{
+        this.price=resp;
+      }
+    );
   }
   onConfirm(){
     this.order.orderProducts=this.bS.orderProducts;
-    console.log(this.order);
+    this.order.username=sessionStorage.getItem("username");
+    this.bS.changeTotalPrice();
+    this.order.price=this.price;
     this.orderService.saveOrder(this.order).subscribe(
-      resp=>{
-        
-        console.log(resp);
+      success=>{
+        this.bS.orderProducts=[];
+        this.bS.changeProductCount();
+      }
+      ,error=>{
+        alert("There was a problem in saving the order. ");
       }
     );
   }
