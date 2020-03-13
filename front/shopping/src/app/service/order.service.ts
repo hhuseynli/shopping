@@ -14,4 +14,8 @@ export class OrderService {
     return this.http.post(`${API_URL}/orders`,order);
   }
 
+  findByUsername(begin:number, username:string){
+    return this.http.get(`${API_URL}/orders/findPartial/${begin}/${username}`)
+  }
+
 }
