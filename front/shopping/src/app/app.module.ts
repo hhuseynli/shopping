@@ -25,6 +25,7 @@ import { ProductViewComponent } from './component/product-view/product-view.comp
 import { UserProductComponent } from './component/user-product/user-product.component';
 import { BasketComponent } from './component/basket/basket.component';
 import { OrderConfirmationComponent } from './component/order-confirmation/order-confirmation.component';
+import { OrderComponent } from './component/order/order.component';
 
 
 
@@ -45,7 +46,8 @@ import { OrderConfirmationComponent } from './component/order-confirmation/order
     ProductViewComponent,
     UserProductComponent,
     BasketComponent,
-    OrderConfirmationComponent
+    OrderConfirmationComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
