@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Huseyn.shopping.dao.ProductsDAO;
 import com.Huseyn.shopping.model.Product;
 import com.Huseyn.shopping.model.SearchModel;
-import com.mysql.cj.util.StringUtils.SearchMode;
 
 @RestController
 @RequestMapping(path="/products" )
