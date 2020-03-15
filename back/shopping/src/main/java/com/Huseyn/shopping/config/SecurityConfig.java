@@ -19,7 +19,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.authorizeRequests()
 		.antMatchers("/filedownload/**").permitAll()
 		.antMatchers("/users/**").permitAll()
-		.antMatchers(HttpMethod.GET, "/products/findRange/**").permitAll()
+		.antMatchers("/validations/admin").hasRole("ADMIN")
+		.antMatchers( "/products/searchRange/**").permitAll()
 		.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 		.anyRequest().authenticated().and()
 		.httpBasic();

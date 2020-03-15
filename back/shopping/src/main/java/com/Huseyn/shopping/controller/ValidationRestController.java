@@ -17,4 +17,9 @@ public class ValidationRestController {
 		
 		return result;
 	}
+	
+	@GetMapping(path="/admin")
+	public boolean validateAdmin(){		
+		return true;
+	}
 }

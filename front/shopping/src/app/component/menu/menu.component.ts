@@ -25,6 +25,11 @@ export class MenuComponent implements OnInit {
   isUserLoggedIn(): boolean {
     return this.userService.checkLoggedIn();
   }
+  isAdmin(){
+    return this.userService.isUserRoleAdmin();
+  }
+
+
   onCart() {
     this.matDialog.open(BasketComponent);
   }
