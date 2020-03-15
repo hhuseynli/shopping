@@ -15,7 +15,7 @@ export class OrderService {
   }
 
   findByUsername(begin:number, username:string){
-    return this.http.get(`${API_URL}/orders/findPartial/${begin}/${username}`)
+    return this.http.get<OrderModel[]>(`${API_URL}/orders/findPartial/${begin}/${username}`);
   }
 
 }
