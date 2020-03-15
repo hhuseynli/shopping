@@ -73,6 +73,9 @@ export class UserProductComponent implements OnInit {
       );
       
     }
+    onSaveProduct() {
+      this.matDialog.open(AddProductComponent);
+    }
 
 
 }

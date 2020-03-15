@@ -10,13 +10,13 @@ export class ProductService {
 
 selectedProduct:Product;
 product:Product;
+
   constructor( private http:HttpClient) { }
 
   public addProductToBackend(product:Product ){
     this.http.post<Product>(`${API_URL}/products/product`, product).subscribe(
       ans=>{
-        console.log(ans);
-        alert('Product Added Successfully');
+        alert('Product Saved Successfully');
       }
     );
   }
