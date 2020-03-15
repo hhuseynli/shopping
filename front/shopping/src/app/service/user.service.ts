@@ -8,7 +8,6 @@ import { API_URL } from '../constants';
 })
 export class UserService {
   username:string="";
-   result:boolean=false;
   checkLoggedIn(): boolean {
     let result:boolean= false;
     if(sessionStorage.getItem("authorization")){
@@ -18,19 +17,7 @@ export class UserService {
     return result;
   }
 
-  isUserRoleAdmin(){
-    
-    
-    return this.result;
-  }
-
-  constructor(private http:HttpClient) {
-    this.http.get<boolean>(`${API_URL}/validations/admin`).subscribe(
-      resp=>{
-        this.result=resp;
-      }
-    );
-   }
+  constructor(private http:HttpClient) { }
 
   public createAccount(user:User){
     this.http.post<User>(`${API_URL}/users`,user).subscribe(
