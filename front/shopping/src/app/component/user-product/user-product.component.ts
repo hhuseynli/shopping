@@ -22,7 +22,7 @@ export class UserProductComponent implements OnInit {
 
  begin:number=0;
  ngOnInit() {
-   this.service.findPartialByUsername(this.begin, "HH").subscribe(data => {
+   this.service.findPartialByUsername(this.begin, sessionStorage.getItem("username")).subscribe(data => {
      this.products = data;
    });
    
@@ -58,7 +58,7 @@ export class UserProductComponent implements OnInit {
     }
     onScroll(){
       this.begin+=10;
-      this.service.findPartialByUsername(this.begin,"HH").subscribe(data => {
+      this.service.findPartialByUsername(this.begin,sessionStorage.getItem("username")).subscribe(data => {
         this.products.push(...data);
       });
       
@@ -66,7 +66,7 @@ export class UserProductComponent implements OnInit {
     }
     loadRows() {
     
-      this.service.findPartialByUsername(0,"HH").subscribe(
+      this.service.findPartialByUsername(0,sessionStorage.getItem("username")).subscribe(
         resp => {
           this.products = resp;
         }

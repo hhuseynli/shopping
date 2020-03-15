@@ -14,7 +14,7 @@ public interface ProductsDAO extends JpaRepository<Product, Integer> {
 	@Query(value="select * from product where username=?1 limit ?2,?3", nativeQuery=true)
 	public List<Product> findRangeByUsername(String username, Integer begin, Integer length);
 	
-	@Query(value="select * from product where name like %?1% limit ?2,?3 ", nativeQuery=true)
+	@Query(value="select * from product where username not like ?1 limit ?2,?3 ", nativeQuery=true)
 	public List<Product> findSearchInRange(String search, Integer begin, Integer length );
 
 }

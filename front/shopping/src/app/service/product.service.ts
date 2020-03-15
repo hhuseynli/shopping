@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product, Category } from '../component/model/product';
+import { Product, Category, SearchModel } from '../component/model/product';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { API_URL } from '../constants';
 
@@ -34,6 +34,10 @@ product:Product;
 
   public findPartialByUsername(begin:number,username:string){
     return this.http.get<Product[]>(`${API_URL}/products/findRange/${begin}/${username}`);
+  }
+
+  public searchPartial(search:SearchModel){
+    return this.http.post<Product[]>(`${API_URL}/products/searchRange`,search);
   }
 
   

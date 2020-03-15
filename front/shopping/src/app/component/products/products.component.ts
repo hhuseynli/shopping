@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, OrderProduct } from '../model/product';
+import { Product, OrderProduct, SearchModel } from '../model/product';
 import { ProductService } from 'src/app/service/product.service';
 import { API_URL } from 'src/app/constants';
 import { MatDialog } from '@angular/material';
@@ -17,11 +17,19 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   begin: number = 0;
   download: string = `${API_URL}/filedownload/files/`;
+  username:string="";
 
   constructor(private service: ProductService, private matDialog: MatDialog, private upload: UploadService, private basket: BasketService) { }
 
   ngOnInit() {
-    this.service.findPartial(this.begin).subscribe(
+    if(sessionStorage.getItem("username")){
+      this.username=sessionStorage.getItem("username");
+    }
+    let search:SearchModel=new SearchModel();
+    search.begin=this.begin;
+    search.length=12;
+    search.search=this.username;
+    this.service.searchPartial(search).subscribe(
       resp => {
         this.products = resp;
       }
@@ -32,8 +40,12 @@ export class ProductsComponent implements OnInit {
   }
 
   onScroll() {
-    this.begin += 10;
-    this.service.findPartial(this.begin).subscribe(
+    this.begin += 12;
+    let search:SearchModel=new SearchModel();
+    search.begin=this.begin;
+    search.length=12;
+    search.search=this.username;
+    this.service.searchPartial(search).subscribe(
       resp => {
         this.products.push(...resp);
       }
